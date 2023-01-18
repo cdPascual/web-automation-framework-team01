@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="framework test">
+    <parameter name="browserName" value="chrome"></parameter>
+    <parameter name="url" value="https://www.google.com/"></parameter>
+    <test name="framework test">
+        <classes>
+            <class name="test.TestFramework"></class>
+        </classes>
+    </test>
+</suite>
