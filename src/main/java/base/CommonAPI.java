@@ -43,7 +43,7 @@ public class CommonAPI {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         driver.get(url);
-        Log.info("browser has opened");
+        Log.info("browser has opened!");
     }
 
     @AfterMethod

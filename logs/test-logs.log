@@ -5,3 +5,6 @@
 16:07:32.668 [main] INFO  base.CommonAPI - browser has opened
 16:07:32.679 [main] INFO  test.TestFramework - basic automation a success
 16:07:48.927 [main] INFO  base.CommonAPI - browser has closed!
+16:14:01.297 [main] INFO  base.CommonAPI - browser has opened!
+16:14:01.308 [main] INFO  test.TestFramework - basic automation a success
+16:14:17.534 [main] INFO  base.CommonAPI - browser has closed!
