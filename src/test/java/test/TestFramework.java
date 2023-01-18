@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class TestFramework extends CommonAPI {
+
     Logger Log = LogManager.getLogger(TestFramework.class.getName());
     @Test
     public void TestAutomation(){
