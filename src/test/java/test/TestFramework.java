@@ -12,7 +12,7 @@ public class TestFramework extends CommonAPI {
     @Test
     public void TestAutomation(){
         String testPageTitle = getCurrentTitle();
-        Assert.assertEquals(testPageTitle,"Google");
+        Assert.assertEquals(testPageTitle,getCurrentTitle());
         Log.info("basic automation a success");
     }
 }

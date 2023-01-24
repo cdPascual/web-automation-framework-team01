@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="framework test">
+<suite name="amazon test">
+    <parameter name="useCloudEnv" value="false"></parameter>
+    <parameter name="os" value="windows"></parameter>
+    <parameter name="osVersion" value="11"></parameter>
     <parameter name="browserName" value="chrome"></parameter>
-    <parameter name="url" value="https://www.google.com/"></parameter>
-    <test name="framework test">
+    <parameter name="browserVersion" value="100"></parameter>
+    <parameter name="url" value="https://www.Amazon.com/"></parameter>
+    <test name="amazon tests">
         <classes>
             <class name="test.TestFramework"></class>
         </classes>
