@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>Nov2022Framework</artifactId>
+    <artifactId>Web-automation-framework-team01</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -97,7 +97,7 @@
                 <version>2.12.4</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/resources/runner.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/resources/carlosRunner.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
