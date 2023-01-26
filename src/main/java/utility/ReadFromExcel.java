@@ -1,10 +1,10 @@
-package utilities;
+package utility;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -72,8 +72,10 @@ public class ReadFromExcel {
 
 
     public static void main(String[] args) throws IOException {
-        ReadFromExcel readFromExcel = new ReadFromExcel("C:\\Users\\CarlosP\\OneDrive\\Desktop\\NovProject2022\\Nov2022Framework\\data\\titles.xlsx","test data");
+        //System.out.println(System.getProperty("user.dir") +File.separator+ "data"+ File.separator+"titles.xlsx");
+        ReadFromExcel readFromExcel = new ReadFromExcel(System.getProperty("user.dir") +File.separator+ "data"+ File.separator+"titles.xlsx","test data");
         System.out.println(readFromExcel.getCellValueForGivenHeaderAndKey("key","selenium search title"));
+
     }
 
 }

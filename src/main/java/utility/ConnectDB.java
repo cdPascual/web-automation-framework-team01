@@ -1,8 +1,7 @@
-package utilities;
+package utility;
 
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import jdk.jshell.execution.Util;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,19 +1,21 @@
-package utilities;
+package utility;
 
-import java.awt.*;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Properties;
 
 public class Utility{
+
+    public static String path = System.getProperty("user.dir");
     public static Properties getProperties(){
         Properties prop = new Properties();
 
         try {
-            InputStream inputStream = new FileInputStream("C:\\Users\\CarlosP\\OneDrive\\Desktop\\NovProject2022\\Nov2022Framework\\config.properties");
+            File file = new File("config.properties");
+            InputStream inputStream = new FileInputStream(file.getAbsolutePath());
             prop.load(inputStream);
             inputStream.close();
         }
@@ -30,7 +32,7 @@ public class Utility{
     }
 
 //    public static void main(String[] args){
-//        String toEncode = "XzsZaJzisuHwJ4qdoDpY";
+//        String toEncode = "roni_cost3@example.com";
 //        String encoded = Base64.getEncoder().encodeToString(toEncode.getBytes());
 //        System.out.println(encoded);
 //    }
