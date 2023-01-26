@@ -23,20 +23,20 @@ public class CommonAPI {
     Logger Log = LogManager.getLogger(CommonAPI.class.getName());
     public WebDriver driver;
 
-    public void getDriver(String browser){
-        if(browser.equalsIgnoreCase("chrome")){
+    public void getDriver(String browser) {
+        if (browser.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver= new ChromeDriver();
+            driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-        }else if (browser.equalsIgnoreCase("edge")) {
+        } else if (browser.equalsIgnoreCase("edge")) {
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
     }
 
-    @Parameters({"url","browserName"})
+    @Parameters({"url", "browserName"})
     @BeforeMethod
     public void setUp(String url, String browserName) {
         getDriver(browserName);
@@ -44,6 +44,7 @@ public class CommonAPI {
         driver.manage().window().maximize();
         driver.get(url);
         Log.info("browser has opened!");
+        Log.info("Website opened");
     }
 
     @AfterMethod
@@ -51,48 +52,46 @@ public class CommonAPI {
         driver.close();
         Log.info("browser has closed!");
     }
-    public void clickOn(String cssOrXpath){
-        try{
+
+    public void clickOn(String cssOrXpath) {
+        try {
             driver.findElement(By.cssSelector(cssOrXpath)).click();
-        }catch(Exception e){
+        } catch (Exception e) {
             driver.findElement(By.xpath(cssOrXpath)).click();
         }
     }
 
-    public void typeText(String cssOrXpath, String text){
-        try{
+    public void typeText(String cssOrXpath, String text) {
+        try {
             driver.findElement(By.cssSelector(cssOrXpath)).sendKeys(text);
-        }catch(Exception e){
+        } catch (Exception e) {
             driver.findElement(By.xpath(cssOrXpath)).sendKeys(text);
         }
     }
 
-    public void typeTextEnter(String cssOrXpath, String text){
-        try{
-            driver.findElement(By.cssSelector(cssOrXpath)).sendKeys(text, Keys.ENTER);
-        }catch(Exception e){
-            driver.findElement(By.xpath(cssOrXpath)).sendKeys(text, Keys.ENTER);
-        }
+    public void typeTextEnter(WebElement element, String text) {
+        element.sendKeys(text, Keys.ENTER);
 
     }
 
-    public void selectOptionFromDropdown(String cssOrXpath, String option){
+
+    public void selectOptionFromDropdown(String cssOrXpath, String option) {
         WebElement dropdown;
-        try{
+        try {
             dropdown = driver.findElement(By.cssSelector(cssOrXpath));
             Select select = new Select(dropdown);
-            try{
+            try {
                 select.selectByVisibleText(option);
-            }catch(Exception e2){
+            } catch (Exception e2) {
                 select.selectByValue(option);
             }
 
-        }catch(Exception e){
+        } catch (Exception e) {
             dropdown = driver.findElement(By.xpath(cssOrXpath));
             Select select = new Select(dropdown);
-            try{
+            try {
                 select.selectByVisibleText(option);
-            }catch(Exception e2){
+            } catch (Exception e2) {
                 select.selectByValue(option);
             }
 
@@ -100,24 +99,29 @@ public class CommonAPI {
 
     }
 
-    public String getTextFromElement(String cssOrXpath){
-        try{
+    public String getTextFromElement(String cssOrXpath) {
+        try {
             return driver.findElement(By.cssSelector(cssOrXpath)).getText();
-        } catch(Exception e){
+        } catch (Exception e) {
             return driver.findElement(By.xpath(cssOrXpath)).getText();
         }
     }
 
-    public void hoverOver(String cssOrXpath){
+    public void hoverOver(String cssOrXpath) {
         Actions actions = new Actions(driver);
         try {
             actions.moveToElement(driver.findElement(By.cssSelector(cssOrXpath))).build().perform();
-        }catch (Exception e){
+        } catch (Exception e) {
             actions.moveToElement(driver.findElement(By.xpath(cssOrXpath))).build().perform();
         }
     }
 
-    public String getCurrentTitle(){
+    public String getCurrentTitle() {
         return driver.getTitle();
+    }
+
+
+    public String getCurrentUrl() {
+        return driver.getCurrentUrl();
     }
 }
