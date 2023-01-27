@@ -222,6 +222,7 @@ public class CommonAPI {
             select.selectByValue(option);
         }
     }
+
     public String getTextFromElement(WebElement element){
         return element.getText();
     }

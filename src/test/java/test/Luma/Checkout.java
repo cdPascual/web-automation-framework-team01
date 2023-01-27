@@ -1,4 +1,6 @@
 package test.Luma;
 
-public class Checkout {
+import base.CommonAPI;
+
+public class Checkout extends CommonAPI {
 }
