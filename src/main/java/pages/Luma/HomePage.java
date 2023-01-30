@@ -31,6 +31,13 @@ public class HomePage extends CommonAPI {
     @FindBy(xpath = "//a[@id='ui-id-3']")
     WebElement whatsNewMenuItem;
 
+//    @FindBy(xpath = "//span[contains(text(), 'Jackets')]")
+//    WebElement jackets;
+//    public void clickJackets(){
+//
+//    }
+    //span[contains(text(), 'Jackets')]
+
 //    @FindBy(css = "#searchDropdownBox")
 //    WebElement menuDropdown;
 

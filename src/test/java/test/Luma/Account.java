@@ -37,8 +37,8 @@ public class Account extends CommonAPI {
 
     }
 
-    @Test
-    public void validCredentials() throws InterruptedException {
+//    @Test
+//    public void validCredentials() throws InterruptedException {
 //        HomePage homePage = new HomePage(getDriver());
 //        WhatsNewPage whatsNewPage= new WhatsNewPage(getDriver());
 //        LoginPage loginPage = new LoginPage(getDriver());
@@ -61,6 +61,6 @@ public class Account extends CommonAPI {
 //        String error = loginPage.getErrorMessage();
 //        Assert.assertEquals(error, "Please enter a valid email address (Ex: johndoe@domain.com).");
 //        LOG.info("error message validation success");
+//    }
 
-    }
 }

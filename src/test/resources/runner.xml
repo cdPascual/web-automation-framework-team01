@@ -12,7 +12,8 @@
         <classes>
 <!--            <class name="test.TestFramework"></class>-->
 <!--            <class name="test.Luma.Account"></class>-->
-            <class name="test.Luma.ShoppingCart"></class>
+<!--            <class name="test.Luma.ShoppingCart"></class>-->
+            <class name="test.Luma.BaseMenu"></class>
         </classes>
     </test>
 </suite>
