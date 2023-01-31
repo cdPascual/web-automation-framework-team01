@@ -1,6 +1,7 @@
 package base;
 
 import com.relevantcodes.extentreports.LogStatus;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -89,6 +90,7 @@ public class CommonAPI {
         }
         ExtentTestManager.endTest();
         extent.flush();
+
         if (takeScreenshot.equalsIgnoreCase("true")){
             if (result.getStatus() == ITestResult.FAILURE) {
                 takeScreenshot(result.getName());
@@ -127,29 +129,34 @@ public class CommonAPI {
         cap.setCapability("browser_version", browserVersion);
         cap.setCapability("resolution", "1024x768");
         driver = new RemoteWebDriver(new URL("http://" + userName + ":" + password + "@hub-cloud.browserstack.com:80/wd/hub"), cap);
-        if (envName.equalsIgnoreCase("browserstack")){
+
+        if (envName.equalsIgnoreCase("browserstack")) {
             cap.setCapability("resolution", "1024x768");
-            driver = new RemoteWebDriver(new URL("http://"+userName+":"+password+"@hub-cloud.browserstack.com:80/wd/hub"),cap);
+            driver = new RemoteWebDriver(new URL("http://" + userName + ":" + password + "@hub-cloud.browserstack.com:80/wd/hub"), cap);
         } else if (envName.equalsIgnoreCase("saucelabs")) {
-            driver = new RemoteWebDriver(new URL("http://"+userName+":"+password+"@ondemand.saucelabs.com:80/wd.hub"),cap);
+            driver = new RemoteWebDriver(new URL("http://" + userName + ":" + password + "@ondemand.saucelabs.com:80/wd.hub"), cap);
+
         }
 
 
     }
 
-    @Parameters({"useCloudEnv", "envName", "os", "osVersion","browserName","browserVersion","url"})
+
+    @Parameters({"useCloudEnv", "envName", "os", "osVersion", "browserName", "browserVersion", "url"})
+
     @BeforeMethod
     public void setUp(@Optional("false") boolean useCloudEnv, @Optional("browserstack") String envName, @Optional("windows") String os,
                       @Optional("11") String osVersion, @Optional("Chrome") String browserName,
                       @Optional("108") String browserVersion, @Optional("https://www.Google.com") String url) throws MalformedURLException {
-        if(useCloudEnv){
+
+        if (useCloudEnv) {
             System.out.println(userName);
             System.out.println(password);
-            getCloudDriver(envName, os,osVersion,browserName,browserVersion, userName,password);
-        }else{
+            getCloudDriver(envName, os, osVersion, browserName, browserVersion, userName, password);
+        } else {
             getLocalDriver(browserName);
         }
-        if(maximizeBrowser.equalsIgnoreCase("true")){
+        if (maximizeBrowser.equalsIgnoreCase("true")) {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         }
 
@@ -162,6 +169,7 @@ public class CommonAPI {
 //        driver.close();
 //        //LOG.info("browser has closed!");
 //    }
+
     public WebDriver getDriver(){
         return driver;
     }
@@ -193,7 +201,7 @@ public class CommonAPI {
         DateFormat df = new SimpleDateFormat("MMddyyyyHHmma");
         Date date = new Date();
         df.format(date);
-
+        
         File file = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(file, new File(Utility.path + File.separator +"screenshots"+ File.separator + screenshotName+" "+df.format(date)+".jpeg"));
@@ -202,17 +210,25 @@ public class CommonAPI {
             LOG.info("Exception while taking screenshot "+e.getMessage());
         }
     }
+    
     public void clickOn(WebElement element){
         element.click();
     }
 
+
     public void typeText(WebElement element, String text ){
         element.sendKeys(text);
     }
+    
     public void typeTextEnter(WebElement element, String text){
         element.sendKeys(text, Keys.ENTER);
-
     }
+    
+    public void waitForElementToBeVisible(WebDriver driver, int duration, WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    
     public void selectOptionFromDropdown(WebElement dropdown, String option){
         Select select = new Select(dropdown);
 
@@ -233,4 +249,10 @@ public class CommonAPI {
     public String getCurrentTitle(){
         return driver.getTitle();
     }
+    
+    public String getWebPageHeaderText(WebElement element){
+        String webpageTitle= element.getText();
+        return webpageTitle;
+    }
 }
+
