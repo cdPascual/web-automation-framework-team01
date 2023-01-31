@@ -1,4 +1,7 @@
 package pages.Luma;
 
-public class CreateAccountPage {
+import base.CommonAPI;
+
+public class CreateAccountPage extends CommonAPI {
+
 }

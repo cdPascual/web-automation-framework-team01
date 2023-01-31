@@ -1,5 +1,7 @@
 package test.Luma;
 
-public class MainMenu {
+import base.CommonAPI;
+
+public class MainMenu extends CommonAPI {
 
 }

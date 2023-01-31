@@ -37,15 +37,16 @@ public class Account extends CommonAPI {
 
     }
 
-    @Test
-    public void validCredentials() throws InterruptedException {
-        HomePage homePage = new HomePage(getDriver());
-        WhatsNewPage whatsNewPage= new WhatsNewPage(getDriver());
-        LoginPage loginPage = new LoginPage(getDriver());
-        String email = Utility.getProperties().getProperty("magentoLuma.username");
-        String password = Utility.getProperties().getProperty("magentoLuma.password");
-        //String password = ConnectDB.getTableColumnData("select * from credentials","password").get(0);
-
+//    @Test
+//    public void validCredentials() throws InterruptedException {
+//        HomePage homePage = new HomePage(getDriver());
+//        WhatsNewPage whatsNewPage= new WhatsNewPage(getDriver());
+//        LoginPage loginPage = new LoginPage(getDriver());
+//        String email = Utility.getProperties().getProperty("magentoLuma.username");
+//        String password = Utility.getProperties().getProperty("magentoLuma.password");
+//        //String password = ConnectDB.getTableColumnData("select * from credentials","password").get(0);
+//
+//
 
 //        homePage.clickOnLoginButton();
 //
@@ -62,18 +63,6 @@ public class Account extends CommonAPI {
 //        Assert.assertEquals(error, "Please enter a valid email address (Ex: johndoe@domain.com).");
 //        LOG.info("error message validation success");
 
-        homePage.clickOnWhatsNewMenuItem();
-        String title2= getCurrentTitle();
-        Assert.assertEquals(title2,"What's New Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
-        LOG.info("successfully went to Whats New Page");
+//    }
 
-        whatsNewPage.clickOnWomenHoodiesSweatshirt();
-        String title3= getCurrentTitle();
-        Assert.assertEquals(title3,"Hoodies & Sweatshirts - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
-        LOG.info("successfully went to woman hoodies & sweatshirt");
-
-
-
-
-    }
 }

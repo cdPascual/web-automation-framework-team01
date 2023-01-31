@@ -1,4 +1,7 @@
 package pages.Luma;
 
-public class SalePage {
+import base.CommonAPI;
+
+public class SalePage extends CommonAPI {
+
 }

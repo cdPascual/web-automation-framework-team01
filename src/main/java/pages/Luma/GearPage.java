@@ -1,4 +1,7 @@
 package pages.Luma;
 
-public class GearPage {
+import base.CommonAPI;
+
+public class GearPage extends CommonAPI {
+
 }
