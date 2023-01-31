@@ -15,7 +15,7 @@ public class HomePage extends CommonAPI {
         PageFactory.initElements(driver, this);
     }
 
-    //objects
+    //ELEMENTS
     @FindBy(css = "#search")
     WebElement searchField;
 
@@ -42,7 +42,7 @@ public class HomePage extends CommonAPI {
 //    @FindBy(css = "#searchDropdownBox")
 //    WebElement menuDropdown;
 
-    //reusable steps
+    //USEFUL METHODS
     public void typeInSearch(String item){
         typeText(searchField, item);
         LOG.info("item type success");

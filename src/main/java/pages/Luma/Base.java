@@ -21,6 +21,7 @@ public class Base extends CommonAPI {
         PageFactory.initElements(driver, this);
     }
 
+    //ELEMENTS ON HEADER
     @FindBy(xpath = "//span[@class='counter-number']")
     WebElement cartItemCounter;
 
@@ -119,17 +120,24 @@ public class Base extends CommonAPI {
     @FindBy (xpath = "//a[@id='ui-id-27']")
     WebElement watches;
 
-    //training dropdown
+    //TRAINING DROPDOWN
     @FindBy (xpath = "//a[@id='ui-id-28']")
     WebElement videoDownload;
 
+    //CART ICON
+    @FindBy(xpath = "//span[contains(text(), 'View and Edit Cart')]")
+    WebElement viewEditCart;
 
 
-    public int getTotalItemsInCart(WebDriver driver){
-        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        LOG.info("There "+ getTextFromElement(cartItemCounter)+" item/items in the cart.");
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
-        wait.until(ExpectedConditions.textToBePresentInElement(cartItemCounter,"1"));
+    //USEFUL METHODS
+    public int getTotalItemsInCart(WebDriver driver) throws InterruptedException {
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Thread.sleep(3000);
+        LOG.info(getTextFromElement(cartItemCounter)+" item/items in the cart.");
+
+        //WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        //wait.until(ExpectedConditions.textToBePresentInElement(cartItemCounter,"2"));
+
 
         return Integer.parseInt(getTextFromElement(cartItemCounter));
     }
@@ -257,6 +265,10 @@ public class Base extends CommonAPI {
     public void clickOnVideoDownload(WebDriver driver){
         hoverOver(driver, training);
         clickOn(videoDownload);
+    }
+
+    public void clickOnViewEditCart(){
+        clickOn(viewEditCart);
     }
 
 }

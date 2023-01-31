@@ -16,7 +16,7 @@ public class LoginPage extends CommonAPI {
         PageFactory.initElements(driver, this);
     }
 
-    //objects
+    //ELEMENTS
     @FindBy(xpath ="//input[@id='email']")
     WebElement emailField;
 
@@ -29,7 +29,7 @@ public class LoginPage extends CommonAPI {
     @FindBy(xpath ="//div[contains(text(), 'Please enter a valid email address (Ex: johndoe@domain.com).')]")
     WebElement errorMessage;
 
-    //reusable methods
+    //USEFUL METHODS
     public void typeEmailAddress(String emailAddress){
         typeText(emailField, emailAddress);
         LOG.info("type email address success");

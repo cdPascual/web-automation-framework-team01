@@ -221,6 +221,7 @@ public class CommonAPI {
     }
     
     public void typeTextEnter(WebElement element, String text){
+        element.clear();
         element.sendKeys(text, Keys.ENTER);
     }
     
