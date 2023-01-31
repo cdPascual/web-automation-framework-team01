@@ -21,6 +21,7 @@ public class WomenHoodieSweatshirtPage extends CommonAPI {
 
     WebElement SizeStatus;
 
+    //ELEMENTS
     @FindBy (xpath = "//button[@title='Add to Cart']")
     WebElement addToCart;
 
@@ -30,6 +31,7 @@ public class WomenHoodieSweatshirtPage extends CommonAPI {
     @FindBy (xpath = "//div[@class=\"products wrapper grid products-grid\"]//ol//li//div//div//div[2]//div[@class=\"swatch-attribute color\"]//div[2]")
     WebElement greenColor;
 
+    //USEFUL METHODS
     public void clickOnMediumSize(){
         clickOn(mediumSize);
     }

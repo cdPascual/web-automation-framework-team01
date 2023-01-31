@@ -210,6 +210,7 @@ public class CommonAPI {
         element.sendKeys(text);
     }
     public void typeTextEnter(WebElement element, String text){
+        element.clear();
         element.sendKeys(text, Keys.ENTER);
 
     }
