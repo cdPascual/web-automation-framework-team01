@@ -12,6 +12,9 @@ import pages.Luma.Base;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.File;
+import java.io.IOException;
+
 public class TestFramework extends CommonAPI {
 
     Logger Log = LogManager.getLogger(TestFramework.class.getName());
@@ -29,7 +32,6 @@ public class TestFramework extends CommonAPI {
         base.clickOnWomenJackets(getDriver());
         String title = getCurrentTitle();
         Assert.assertEquals(title, "Jackets - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
-
 
     }
 }

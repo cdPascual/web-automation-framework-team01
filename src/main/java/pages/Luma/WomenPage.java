@@ -16,5 +16,4 @@ public class WomenPage extends CommonAPI {
         PageFactory.initElements(driver, this);
     }
 
-
 }

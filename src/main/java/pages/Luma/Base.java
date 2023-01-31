@@ -14,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Base extends CommonAPI {
+
     Logger LOG = LogManager.getLogger(Base.class.getName());
 
     public Base(WebDriver driver){

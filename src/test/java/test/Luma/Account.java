@@ -47,6 +47,7 @@ public class Account extends CommonAPI {
 //        //String password = ConnectDB.getTableColumnData("select * from credentials","password").get(0);
 //
 //
+
 //        homePage.clickOnLoginButton();
 //
 //        String title = getCurrentTitle();
@@ -61,6 +62,7 @@ public class Account extends CommonAPI {
 //        String error = loginPage.getErrorMessage();
 //        Assert.assertEquals(error, "Please enter a valid email address (Ex: johndoe@domain.com).");
 //        LOG.info("error message validation success");
+
 //    }
 
 }

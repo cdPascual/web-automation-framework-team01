@@ -12,6 +12,4 @@ public class GearPage extends CommonAPI {
     public GearPage(WebDriver driver){
         PageFactory.initElements(driver, this);
     }
-
-
 }
