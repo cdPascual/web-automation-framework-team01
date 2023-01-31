@@ -1,7 +1,6 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
-import com.mysql.cj.log.Log;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -26,6 +25,19 @@ public class CheckoutOverviewPage extends CommonAPI {
     @FindBy(xpath = "//div[text()='32.39']")
     WebElement itemTotalPriceDisplayed;
 
+    @FindBy(xpath = "//span[@class='title']")
+    WebElement homepageHeaderElement;
+
+    @FindBy(xpath = "//div[@class='summary_subtotal_label']")
+    public static WebElement totalForItem;
+
+    @FindBy(xpath = "//div[@class='summary_tax_label']")
+    public static  WebElement totalTax;
+
+    @FindBy(xpath = "//div[@class='summary_total_label']")
+    public static WebElement subTotal;
+
+
     public void ifItemAndPriceDisplayed() {
         itemDisplayed.isDisplayed();
         itemTotalPriceDisplayed.isDisplayed();
@@ -36,6 +48,12 @@ public class CheckoutOverviewPage extends CommonAPI {
         finishButton.click();
         LOG.info("Finish button clicked");
     }
+
+    public String validateHomepageHeaderText(){
+        String text=getWebPageHeaderText(homepageHeaderElement);
+        return text;
+    }
+
 
 
 }

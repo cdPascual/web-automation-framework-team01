@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utility.ReadFromConfigFile;
+import utility.Utility;
 
 public class LoginPage extends CommonAPI {
 
@@ -17,17 +17,20 @@ public class LoginPage extends CommonAPI {
         PageFactory.initElements(driver, this);
     }
 
-    public String username = ReadFromConfigFile.getProperties().getProperty("saucedemo.correct.username");
-    public String password = ReadFromConfigFile.getProperties().getProperty("saucedemo.correct.password");
+    public String username = Utility.getProperties().getProperty("saucedemo.correct.username");
+    public String password = Utility.getProperties().getProperty("saucedemo.correct.password");
 
-    public String incorrectUser = ReadFromConfigFile.getProperties().getProperty("saucedemo.incorrect.username");
-    public String incorrectPass = ReadFromConfigFile.getProperties().getProperty("saucedemo.incorrect.password");
+    public String incorrectUser = Utility.getProperties().getProperty("saucedemo.incorrect.username");
+    public String incorrectPass = Utility.getProperties().getProperty("saucedemo.incorrect.password");
     @FindBy(css = "#user-name")
     WebElement userField;
     @FindBy(css = "#password")
     WebElement passField;
     @FindBy(css = "#login-button")
     WebElement submitField;
+
+    @FindBy(xpath = "\"//span[@class='title']\"")
+    WebElement a;
 
     @FindBy(xpath = "(//div[@class='error-message-container error'])/h3")
     WebElement errorMessage;
@@ -76,38 +79,5 @@ public class LoginPage extends CommonAPI {
 
     }
 
-
-//    @FindBy( xpath= "//input[@id='user_name']")
-//   WebElement userField;
-//
-//    @FindBy(xpath = "//input[@id='password']")
-//    WebElement passField;
-//
-//    @FindBy(xpath = "//input[@id='login_button']")
-//    WebElement submitField;
-
-//    public void findWebElement(WebElement element, String text){
-//            element.sendKeys(text);
-//    }
-//
-//    public void click(WebElement element) {
-//
-//        element.click();
-//    }
-
-//public void typeUsername(String username){
-//    findWebElement(userField, username);
-//    LOG.info("Enter username success");
-//}
-//
-//public void typePassword(String password){
-//    findWebElement(passField,password);
-//    LOG.info("Enter password success");
-//}
-//
-//public void clickOnSubmit(){
-//    click(submitField);
-//    LOG.info("Submit button click success");
-//}
 
 }

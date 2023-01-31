@@ -5,9 +5,9 @@
     <parameter name="url" value="https://www.saucedemo.com/"></parameter>
     <test name="Sauce Demo Test Cases">
         <classes>
-            <class name="com.saucedemo.test.LoginPageTest"></class>
-            <class name="com.saucedemo.test.PurchaseTest"></class>
-            <class name="com.saucedemo.test.HomePageTest"></class>
+            <class name="test.saucedemotests.LoginPageTest"></class>
+            <class name="test.saucedemotests.PurchaseTest"></class>
+            <class name="test.saucedemotests.HomePageTest"></class>
         </classes>
     </test>
 </suite>

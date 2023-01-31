@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
@@ -25,6 +25,13 @@ public class YourCartPage extends CommonAPI {
     @FindBy(css = "button[class='btn btn_action btn_medium checkout_button']")
     WebElement checkOutButton;
 
+    @FindBy(xpath = "//span[@class='title']")
+    WebElement homepageHeaderElement;
+
+    @FindBy(xpath = "//div[@class='cart_quantity']")
+    public static WebElement itemInCartQuantity;
+
+
     public void itemPresentInCart() {
         itemInCart.isDisplayed();
         LOG.info("Item is present in cart page");
@@ -33,6 +40,11 @@ public class YourCartPage extends CommonAPI {
     public void clickCheckoutButton() {
         checkOutButton.click();
         LOG.info("Checkout button clicked");
+    }
+
+    public String validateHomepageHeaderText(){
+        String text=getWebPageHeaderText(homepageHeaderElement);
+        return text;
     }
 
 

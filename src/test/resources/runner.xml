@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="WebAutomationPNT">
+    <parameter name="useCloudEnv" value="false"></parameter>
+    <parameter name="envName" value="browserstack"></parameter>
+    <parameter name="os" value="windows"></parameter>
+    <parameter name="osVersion" value="11"></parameter>
+    <parameter name="browserName" value="chrome"></parameter>
+    <parameter name="browserVersion" value="100"></parameter>
+    <parameter name="url" value="https://magento.softwaretestingboard.com/"></parameter>
+    <test name="Luma Test">
+        <classes>
+<!--            <class name="test.TestFramework"></class>-->
+            <class name="test.Luma.Account"></class>
+        </classes>
+    </test>
+</suite>

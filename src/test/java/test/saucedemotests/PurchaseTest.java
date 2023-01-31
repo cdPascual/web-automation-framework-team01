@@ -1,7 +1,7 @@
-package com.saucedemo.test;
+package test.saucedemotests;
 
 import base.CommonAPI;
-import com.saucedemo.*;
+import com.saucedemo.pages.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -22,10 +22,10 @@ public class PurchaseTest extends CommonAPI {
         homePage = new HomePage(driver);
 
         homePage.loginToWeb();
-        String actualCurrentUrl = getCurrentUrl();
-        String expectedCurrentUrl = "https://www.saucedemo.com/inventory.html";
-        LOG.info("actual home page URL: " + actualCurrentUrl);
-        Assert.assertEquals(actualCurrentUrl, expectedCurrentUrl);
+        String actualHomePageText = homePage.validateHomepageHeaderText();
+        String expectedHomepageText = "PRODUCTS";
+        LOG.info("actual home page URL: " + actualHomePageText);
+        Assert.assertEquals(actualHomePageText, expectedHomepageText);
         LOG.info("land to Swag Labs home page success");
 
         //Select sauce Labs Backpack
@@ -48,60 +48,77 @@ public class PurchaseTest extends CommonAPI {
         sauceLabsBackpackPage.clickOnCart();
         LOG.info("Click on cart Icon success");
 
-        String currentWebUrl = getCurrentUrl();
-        String expectedWebUrl = "https://www.saucedemo.com/cart.html";
-        Assert.assertEquals(currentWebUrl, expectedWebUrl);
+        YourCartPage yourCartPage = new YourCartPage(driver);
+        String currentCartPageText = yourCartPage.validateHomepageHeaderText();
+        String expectedCartPageText = "YOUR CART";
+        Assert.assertEquals(currentCartPageText, expectedCartPageText);
         LOG.info("Landed on Your cart page");
 
-        YourCartPage yourCartPage = new YourCartPage(driver);
+
         yourCartPage.itemPresentInCart();
         LOG.info("Item was added to cart and is displayed");
-
+        yourCartPage.itemInCartQuantity.isDisplayed();
+        String actualQuantityOfItem=yourCartPage.itemInCartQuantity.getText().substring(0);
+        String expectedQuantityOfItem="1";
+        Assert.assertEquals(actualQuantityOfItem,expectedQuantityOfItem);
+        LOG.info("Item quantity in cart validation success");
         yourCartPage.clickCheckoutButton();
         LOG.info("Checkout button click success");
 
         //Validate landing to Your Information page
-        String currentInfoPageUrl = getCurrentUrl();
-        String expectedInfoPageUrl = "https://www.saucedemo.com/checkout-step-one.html";
-        Assert.assertEquals(currentWebUrl, expectedWebUrl);
+        YourInfoPage infoPage = new YourInfoPage(driver);
+        String currentInfoPageText = infoPage.validateHomepageHeaderText();
+        String expectedInfoPageText = "CHECKOUT: YOUR INFORMATION";
+        Assert.assertEquals(currentInfoPageText, expectedInfoPageText);
+        LOG.info("Landed on Your Information page success");
         LOG.info("Landed on Your Information page success");
 
         //User enters firstname, lastname, zipcode and click continue button
-
-        YourInfoPage infoPage = new YourInfoPage(driver);
         infoPage.enterUserInfo();
         infoPage.clickContinue();
         LOG.info("User info enter and click continue success");
 
         //Validate landing on checkout overview page
-        String actualOverviewPageURL = getCurrentUrl();
-        String expectedOverviewPageURL = "https://www.saucedemo.com/checkout-step-two.html";
-        Assert.assertEquals(actualOverviewPageURL, expectedOverviewPageURL);
+        CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
+        String actualOverviewPageText = overviewPage.validateHomepageHeaderText();
+        String expectedOverviewPageText = "CHECKOUT: OVERVIEW";
+        Assert.assertEquals(actualOverviewPageText, expectedOverviewPageText);
         LOG.info("Overview page validation success");
 
         //validate if correct item with correct price is displayed on the overview page and click finish
-        CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
+
         overviewPage.ifItemAndPriceDisplayed();
+        String itemPrice= overviewPage.totalForItem.getText().substring(13, 18);
+        String ItemTax= overviewPage.totalTax.getText().substring(6,9);
+
+        float itemPriceInNumbers= Float.parseFloat(itemPrice);
+        float itemTaxInNumbers=Float.parseFloat(ItemTax);
+
+        float allTotal= itemPriceInNumbers+itemTaxInNumbers;
+        String actualAllTotal= Float.toString(allTotal);
+        LOG.info("Item price + tax = 32.39 validation success");
+
+        Assert.assertEquals(actualAllTotal, "32.39");
         overviewPage.clickFinish();
         LOG.info("Item and price display and click finish success");
 
         //Validate landing on checkout complete page
-
-        String actualCheckoutCompletePageURL = getCurrentUrl();
-        String expectedCheckoutCompletePageURL = "https://www.saucedemo.com/checkout-complete.html";
-        Assert.assertEquals(actualCheckoutCompletePageURL, expectedCheckoutCompletePageURL);
+        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
+        String actualCheckoutCompletePageText = checkoutCompletePage.validateHomepageHeaderText();
+        String expectedCheckoutCompletePageText = "CHECKOUT: COMPLETE!";
+        Assert.assertEquals(actualCheckoutCompletePageText, expectedCheckoutCompletePageText);
         LOG.info("Checkout complete page validation success");
 
         //validate thank you message displayed and go back to homepage url
-        CheckoutCompletePage checkoutCompletePage = new CheckoutCompletePage(driver);
+
         checkoutCompletePage.validateThanksMessage();
         checkoutCompletePage.goBackToHomePage();
         LOG.info("Validate thanks message and click back to home button success: purchase success");
 
         //validate home page landing
-        String actualHomepageURL = getCurrentUrl();
-        String expectedHomepageUrl = "https://www.saucedemo.com/inventory.html";
-        Assert.assertEquals(actualHomepageURL, expectedHomepageUrl);
+        String actualBackToHomepageText = homePage.validateHomepageHeaderText();
+        String expectedBackToHomepageText = "PRODUCTS";
+        Assert.assertEquals(actualBackToHomepageText, expectedBackToHomepageText);
         LOG.info("Back to homepage success");
     }
 
@@ -112,10 +129,10 @@ public class PurchaseTest extends CommonAPI {
         homePage = new HomePage(driver);
 
         homePage.loginToWeb();
-        String actualCurrentUrl = getCurrentUrl();
-        String expectedCurrentUrl = "https://www.saucedemo.com/inventory.html";
-        LOG.info("actual home page URL: " + actualCurrentUrl);
-        Assert.assertEquals(actualCurrentUrl, expectedCurrentUrl);
+        String actualCurrentHeaderTitle = homePage.validateHomepageHeaderText();
+        String expectedCurrentHeaderTitle = "PRODUCTS";
+        LOG.info("actual home page URL: " + actualCurrentHeaderTitle);
+        Assert.assertEquals(actualCurrentHeaderTitle, expectedCurrentHeaderTitle);
         LOG.info("land to Swag Labs home page success");
 
         //Select sauce Labs Backpack
@@ -138,12 +155,14 @@ public class PurchaseTest extends CommonAPI {
         sauceLabsBackpackPage.clickOnCart();
         LOG.info("Click on cart Icon success");
 
-        String currentWebUrl = getCurrentUrl();
-        String expectedWebUrl = "https://www.saucedemo.com/cart.html";
-        Assert.assertEquals(currentWebUrl, expectedWebUrl);
+        YourCartPage yourCartPage = new YourCartPage(driver);
+
+        String actualCartPageText= yourCartPage.validateHomepageHeaderText();
+        String expectedCartPageText="YOUR CART";
+        Assert.assertEquals(actualCartPageText,expectedCartPageText);
         LOG.info("Landed on Your cart page");
 
-        YourCartPage yourCartPage = new YourCartPage(driver);
+
         yourCartPage.itemPresentInCart();
         LOG.info("Item was added to cart and is displayed");
 
@@ -151,13 +170,14 @@ public class PurchaseTest extends CommonAPI {
         LOG.info("Checkout button click success");
 
         //Validate landing to Your Information page
-        String currentInfoPageUrl = getCurrentUrl();
-        String expectedInfoPageUrl = "https://www.saucedemo.com/checkout-step-one.html";
-        Assert.assertEquals(currentWebUrl, expectedWebUrl);
+        YourInfoPage infoPage = new YourInfoPage(driver);
+        String currentInfoPageText = infoPage.validateHomepageHeaderText();
+        String expectedInfoPageText = "CHECKOUT: YOUR INFORMATION";
+        Assert.assertEquals(currentInfoPageText, expectedInfoPageText);
         LOG.info("Landed on Your Information page success");
 
         //user tries to click continue without providing information
-        YourInfoPage infoPage = new YourInfoPage(driver);
+
         infoPage.clickContinue();
         LOG.info("User does not provide info and click continue success");
         String error = infoPage.continueWithoutInfo();
@@ -166,8 +186,8 @@ public class PurchaseTest extends CommonAPI {
         //validate error message
         Assert.assertEquals(error, "Error: First Name is required");
         LOG.info("error message validation success");
-
-
     }
+
+
 
 }

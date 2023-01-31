@@ -1,7 +1,8 @@
-package com.saucedemo.test;
+package test.saucedemotests;
 
 import base.CommonAPI;
-import com.saucedemo.LoginPage;
+import com.saucedemo.pages.HomePage;
+import com.saucedemo.pages.LoginPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
@@ -11,6 +12,7 @@ public class LoginPageTest extends CommonAPI {
     Logger LOG = LogManager.getLogger(LoginPageTest.class.getName());
 
     LoginPage loginPage;
+    HomePage homepage;
 
     @Test
     public void successfulLogin() {
@@ -18,10 +20,14 @@ public class LoginPageTest extends CommonAPI {
         loginPage.typeUsername();
         loginPage.typePass();
         loginPage.clickOnSubmit();
+        LOG.info("Login success");
 
-        String currentTitle = getCurrentTitle();
-        Assert.assertEquals(getCurrentTitle(), "Swag Labs");
-        LOG.info("Home page title validation success");
+        //HomePage validation
+        homepage= new HomePage(driver);
+        String actualHomepageHeaderText= homepage.validateHomepageHeaderText();
+        String expectedHomepageHeaderText= "PRODUCTS";
+        Assert.assertEquals(actualHomepageHeaderText,expectedHomepageHeaderText);
+        LOG.info("page validation success");
     }
 
     @Test

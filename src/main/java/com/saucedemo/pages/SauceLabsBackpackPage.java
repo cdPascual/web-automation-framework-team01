@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +24,8 @@ public class SauceLabsBackpackPage extends CommonAPI {
     WebElement cartIcon;
 
 
+
+
     public void clickAddToCart() {
         addToCartButton.click();
         LOG.info("Add to cart button clicked");
@@ -33,6 +35,8 @@ public class SauceLabsBackpackPage extends CommonAPI {
         cartIcon.click();
         LOG.info("Cart icon clicked");
     }
+
+
 
 
 }

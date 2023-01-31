@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +20,9 @@ public class CheckoutCompletePage extends CommonAPI {
     @FindBy(xpath = "//button[@class='btn btn_primary btn_small']")
     WebElement backToHomeButton;
 
+    @FindBy(xpath = "//span[@class='title']")
+    WebElement homepageHeaderElement;
+
 
     public void validateThanksMessage() {
         thankYouMessage.isDisplayed();
@@ -29,6 +32,11 @@ public class CheckoutCompletePage extends CommonAPI {
     public void goBackToHomePage() {
         backToHomeButton.click();
         LOG.info("Back to home button clicked");
+    }
+
+    public String validateHomepageHeaderText(){
+        String text=getWebPageHeaderText(homepageHeaderElement);
+        return text;
     }
 
 }

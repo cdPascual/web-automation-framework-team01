@@ -1,4 +1,4 @@
-package com.saucedemo;
+package com.saucedemo.pages;
 
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utility.ReadFromConfigFile;
+import utility.Utility;
 
 public class YourInfoPage extends CommonAPI {
 
@@ -32,9 +32,13 @@ public class YourInfoPage extends CommonAPI {
     @FindBy(xpath = "//div[@class='error-message-container error']/h3")
     WebElement errorMessage;
 
-    public String userInfoFirstname = ReadFromConfigFile.getProperties().getProperty("UserInfoFirstname");
-    public String userInfoLastname = ReadFromConfigFile.getProperties().getProperty("UserInfoLastname");
-    public String userInfoZip = ReadFromConfigFile.getProperties().getProperty("UserInfoZip");
+    @FindBy(xpath = "//span[@class='title']")
+    WebElement homepageHeaderElement;
+
+
+    public String userInfoFirstname = Utility.getProperties().getProperty("UserInfoFirstname");
+    public String userInfoLastname = Utility.getProperties().getProperty("UserInfoLastname");
+    public String userInfoZip = Utility.getProperties().getProperty("UserInfoZip");
 
 
     public void enterUserInfo() {
@@ -53,6 +57,12 @@ public class YourInfoPage extends CommonAPI {
         return errorMessage.getText();
 
     }
+
+    public String validateHomepageHeaderText(){
+        String text=getWebPageHeaderText(homepageHeaderElement);
+        return text;
+    }
+
 
 
 }
