@@ -14,7 +14,7 @@ import utility.Utility;
 
 public class ShoppingCart extends CommonAPI {
 
-    Logger LOG = LogManager.getLogger(Account.class.getName());
+    Logger LOG = LogManager.getLogger(ShoppingCart.class.getName());
 
 
     @Test
@@ -74,10 +74,9 @@ public class ShoppingCart extends CommonAPI {
 
         int totalItemsInCart = base.getTotalItemsInCart(getDriver());
         Assert.assertEquals(totalItemsInCart, 2);
-        LOG.info("Add 2 items to cart success");
+        LOG.info("Add 2 items to cart success. "+totalItemsInCart+" item/items in the cart.");
         LOG.info(totalItemsInCart+" item/items in the cart.");
 
-        //Assert.assertEquals(cartPageTitle,"Circe Hooded Ice Fleece Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
     }
 
     @Test
@@ -108,6 +107,7 @@ public class ShoppingCart extends CommonAPI {
 
     }
 
+    @Test
     public void deleteItemsInCart() throws InterruptedException {
         Base base = new Base(getDriver());
         CartPage cartPage = new CartPage(getDriver());
@@ -127,10 +127,12 @@ public class ShoppingCart extends CommonAPI {
         base.clickOnViewEditCart();
         String cartPageTitle = getCurrentTitle();
         Assert.assertEquals(cartPageTitle,"Shopping Cart Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("Landed on Cart Page");
 
         cartPage.clickOnDeleteIcon();
         String cartEmpty = cartPage.cartIsEmpty();
         Assert.assertEquals(cartEmpty, "You have no items in your shopping cart.");
+        LOG.info("Successfully deleted item/items from cart");
     }
 
 

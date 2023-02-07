@@ -32,6 +32,9 @@ public class Base extends CommonAPI {
     @FindBy (xpath = "//a[@class='logo']//img")
     WebElement luma;
 
+    @FindBy(xpath = "//div[@class='panel header']//a//following-sibling::ul//li[3]//a")
+    WebElement createAnAccount;
+
     //ELEMENTS ON THE MAIN MENU
 
     @FindBy (xpath = "//a[@id='ui-id-3']")
@@ -128,6 +131,18 @@ public class Base extends CommonAPI {
     @FindBy(xpath = "//span[contains(text(), 'View and Edit Cart')]")
     WebElement viewEditCart;
 
+    @FindBy (xpath = "//button[@id='top-cart-btn-checkout']")
+    WebElement checkoutButton;
+
+    //Sign-In
+    //@FindBy(xpath = "")
+
+    @FindBy(xpath = "//button[@data-action='customer-menu-toggle']")
+    WebElement customerMenuToggle;
+
+    @FindBy(xpath = "//li[@class='link wishlist']")
+    WebElement myWishList;
+
 
     //USEFUL METHODS
     public int getTotalItemsInCart(WebDriver driver) throws InterruptedException {
@@ -135,12 +150,9 @@ public class Base extends CommonAPI {
         Thread.sleep(3000);
         LOG.info(getTextFromElement(cartItemCounter)+" item/items in the cart.");
 
-        //WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(5));
-        //wait.until(ExpectedConditions.textToBePresentInElement(cartItemCounter,"2"));
-
-
         return Integer.parseInt(getTextFromElement(cartItemCounter));
     }
+    public void clickOnCreateAnAccount(){ clickOn(createAnAccount); }
 
     public void clickOnLuma(){
         clickOn(luma);
@@ -249,9 +261,8 @@ public class Base extends CommonAPI {
         clickOn(menShorts);
     }
 
-    public void clickOnBags(WebDriver driver) throws InterruptedException {
+    public void clickOnBags(WebDriver driver) {
         hoverOver(driver, gear);
-        Thread.sleep(2000);
         clickOn(bags);
     }
     public void clickOnFitnessEquipment(WebDriver driver) throws InterruptedException {
@@ -265,6 +276,16 @@ public class Base extends CommonAPI {
     public void clickOnVideoDownload(WebDriver driver){
         hoverOver(driver, training);
         clickOn(videoDownload);
+    }
+
+    public void clickOnCheckout(){ clickOn(checkoutButton);}
+
+    public void clickOnCustomerMenu(){
+        clickOn(customerMenuToggle);
+    }
+
+    public void clickOnMyWishList(){
+        clickOn(myWishList);
     }
 
     public void clickOnViewEditCart(){

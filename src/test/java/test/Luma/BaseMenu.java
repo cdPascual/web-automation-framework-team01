@@ -10,7 +10,7 @@ import pages.Luma.Base;
 import java.io.IOException;
 
 public class BaseMenu extends CommonAPI {
-    Logger LOG = LogManager.getLogger(Account.class.getName());
+    Logger LOG = LogManager.getLogger(BaseMenu.class.getName());
 
     @Test
     public void headerWhatsNewLink(){
