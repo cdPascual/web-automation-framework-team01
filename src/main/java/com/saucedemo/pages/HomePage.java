@@ -3,14 +3,12 @@ package com.saucedemo.pages;
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import utility.Utility;
-
-import java.io.File;
 
 public class HomePage extends CommonAPI {
     Logger LOG = LogManager.getLogger(HomePage.class.getName());
@@ -34,8 +32,7 @@ public class HomePage extends CommonAPI {
     WebElement passField;
     @FindBy(css = "#login-button")
     WebElement submitField;
-    @FindBy(id = "logout_sidebar_link")
-    WebElement selectLogOutButton;
+
 
     @FindBy(xpath = "//span[@class='title']")
     WebElement pageHeaderTitle;
@@ -49,10 +46,10 @@ public class HomePage extends CommonAPI {
     WebElement menuIcon;
 
     @FindBy(xpath = "//div[@id='shopping_cart_container']/a")
-    WebElement cartIcon;
+    public static WebElement cartIcon;
 
     @FindBy(xpath = "//select[@class='product_sort_container']")
-    WebElement productContainerIcon;
+    public static WebElement productContainerIcon;
 
     @FindBy(xpath = "//div[@class='header_label']/div")
     WebElement appLogo;
@@ -105,10 +102,13 @@ public class HomePage extends CommonAPI {
     WebElement menuResetAppState;
 
     @FindBy(xpath = "//div[@class='nav-image']/a")
-    WebElement aboutPageLogo;
+    WebElement aboutPageOption;
+
+    @FindBy(id = "logout_sidebar_link")
+     WebElement selectLogOutButton;
 
     @FindBy(xpath = "//div[@class='inventory_list']/div[2]")
-WebElement sauceLabsBikeLightItem;
+    WebElement sauceLabsBikeLightItem;
 
     @FindBy(xpath = "//div[@class='inventory_list']/div[2]/div/a/img")
     WebElement sauceLabsBikeLightImg;
@@ -123,16 +123,44 @@ WebElement sauceLabsBikeLightItem;
     public static WebElement sauceLabsBikeLightTitle;
 
 
-
     @FindBy(xpath = "//*[@id='inventory_container']/div/div[2]/div[2]/div[1]/div")
-   public static WebElement sauceLabsBikeLightDescription;
+    public static WebElement sauceLabsBikeLightDescription;
 
     @FindBy(xpath = "//*[@id='inventory_container']/div/div[2]/div[2]/div[2]/div")
-   public static WebElement sauceLabsBikeLightPrice;
+    public static WebElement sauceLabsBikeLightPrice;
 
     @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-bike-light']")
+    public
     WebElement sauceLabsBikeLightAddToCartIcon;
 
+    @FindBy(xpath = "//button[@id='add-to-cart-sauce-labs-backpack']")
+    public static WebElement addToCartButtonOnSauceLabsBackPack;
+
+    @FindBy(id = "react-burger-cross-btn")
+    WebElement closeMenuButton;
+    @FindBy(xpath = "//a[@class='shopping_cart_link']/span")
+    public static WebElement itemQuantityPresentInCart;
+
+    @FindBy(xpath = "//button[@id='remove-sauce-labs-backpack']")
+    public static WebElement sauceLabsBackpackRemoveButton;
+
+    @FindBy(xpath = "//button[@id='remove-sauce-labs-bike-light']")
+    public static WebElement sauceLabsBikeLightRemoveButton;
+
+    @FindBy(xpath = "//span[@class='shopping_cart_badge']")
+    public static WebElement itemQuantityInCart;
+
+    @FindBy(xpath = "//select[@class='product_sort_container']//option[1]")
+    WebElement firstFilterOption;
+
+    @FindBy(xpath = "//select[@class='product_sort_container']//option[2]")
+    WebElement secondFilterOption;
+
+    @FindBy(xpath = "//select[@class='product_sort_container']//option[3]")
+    WebElement thirdFilterOption;
+
+    @FindBy(xpath = "//select[@class='product_sort_container']//option[4]")
+    WebElement fourthFilterOption;
 
     public void selectItem() {
         sauceLabsBackpack.click();
@@ -203,7 +231,7 @@ WebElement sauceLabsBikeLightItem;
     }
 
 
-    public void validateClickOnAllItemsOptionOnSideMenu(){
+    public void validateClickOnAllItemsOptionOnSideMenu() {
         menuIcon.click();
         LOG.info("clicked on menu icon on homepage");
         menuIconAllItemsOption.click();
@@ -217,30 +245,28 @@ WebElement sauceLabsBikeLightItem;
         LOG.info("All items are displayed on the homepage after clicking option to show all items");
     }
 
-    public void resetAppPageOptionOnMenu(){
+    public void resetAppPageOptionOnMenu() {
         menuIcon.click();
-        menuResetAppState.isEnabled();
+       menuResetAppState.isEnabled();
         LOG.info("Reset App State button checked");
     }
 
-    public void validateClickOnLogOutOptionOnMenu(){
+    public void validateClickOnLogOutOptionOnMenu() {
         selectLogOutButton.click();
         LOG.info("Logout button clicked");
 
     }
 
 
-
-
-    public void validateCLickOnAboutOptionOnSideMenu(){
-    menuAboutOption.click();
-    aboutPageLogo.isDisplayed();
-    LOG.info("About page validation complete");
+    public void validateCLickOnAboutOptionOnSideMenu() {
+        menuAboutOption.click();
+        aboutPageOption.isDisplayed();
+        LOG.info("About page validation complete");
 
     }
 
 
-    public void sauceLabsBikeLightItemValidation(){
+    public void sauceLabsBikeLightItemValidation() {
         loginToWeb();
         sauceLabsBikeLightItem.isDisplayed();
         LOG.info("Sauce Labs Bike Light is displayed on home page");
@@ -263,7 +289,33 @@ WebElement sauceLabsBikeLightItem;
     }
 
 
-}
+    public void addFirst2ItemsToCart() {
+        loginToWeb();
+        sauceLabsBikeLightAddToCartIcon.click();
+        addToCartButtonOnSauceLabsBackPack.click();
+        LOG.info("Two items are added to cart");
+    }
 
+    public void afterAddingItemsToCartCheckResetAppStateFunction() {
+        menuIcon.click();
+        menuResetAppState.click();
+        closeMenuButton.click();
+        LOG.info("Reset app state has been clicked");
+    }
+
+//    public void filterOptionNameAtoZ(){
+//        loginToWeb();
+//        productContainerIcon.click();
+//      firstFilterOption.click();
+//      LOG.info("Logged in to web, clicked product container, clicked on first filter option");
+//    }
+
+
+
+//    public void g(){
+//        driver.findElement(By.xpath("//div[@class='inventory_list']")).
+//    }
+
+}
 
 
