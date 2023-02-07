@@ -5,9 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.Luma.HomePage;
-import pages.Luma.LoginPage;
-import pages.Luma.WhatsNewPage;
+import pages.Luma.*;
 import utility.Utility;
 
 public class Account extends CommonAPI {
@@ -17,8 +15,6 @@ public class Account extends CommonAPI {
     public void invalidEmailAddress() throws InterruptedException {
         HomePage homePage = new HomePage(getDriver());
         LoginPage loginPage = new LoginPage(getDriver());
-        //String password = ConnectDB.getTableColumnData("select * from credentials","password").get(0);
-
 
         homePage.clickOnLoginButton();
 
@@ -34,6 +30,150 @@ public class Account extends CommonAPI {
         String error = loginPage.getErrorMessage();
         Assert.assertEquals(error, "Please enter a valid email address (Ex: johndoe@domain.com).");
         LOG.info("error message validation success");
+
+    }
+    @Test
+    public void createNewAccount() throws InterruptedException {
+        Base base = new Base(getDriver());
+        CreateAccountPage createAccountPage = new CreateAccountPage(getDriver());
+
+        base.clickOnCreateAnAccount();
+        String createAnAccountPage = getCurrentTitle();
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("successfully landed on Create An Account Page");
+
+        String firstName = createAccountPage.fakeFirstName();
+        createAccountPage.inputFirstName(firstName);
+        LOG.info("successfully entered a first name");
+
+        String lastName = createAccountPage.fakeLastName();
+        createAccountPage.inputLastName(lastName);
+        LOG.info("successfully entered a last name");
+
+        String email = createAccountPage.fakeEmailAddress();
+        createAccountPage.inputEmailAddress(email);
+        LOG.info("successfully entered an email");
+
+        String password = createAccountPage.fakePassword();
+        createAccountPage.inputPassword(password);
+        LOG.info("successfully entered a password");
+
+        createAccountPage.inputConfirmPassword(password);
+        LOG.info("successfully entered password confirmation");
+
+        createAccountPage.clickCreateAccountButton();
+        LOG.info("successfully clicked create account");
+
+        String myAccountPageTitle = getCurrentTitle();
+        Assert.assertEquals(myAccountPageTitle,"My Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("successfully Created An Account");
+    }
+
+    @Test
+    public void addItemsToWishList() throws InterruptedException {
+        Base base = new Base(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        WatchesPage watchesPage = new WatchesPage(getDriver());
+        BagsPage bagsPage = new BagsPage(getDriver());
+        CreateAccountPage createAccountPage = new CreateAccountPage(getDriver());
+        MyWishListPage wishListPage = new MyWishListPage(getDriver());
+
+        base.clickOnCreateAnAccount();
+        String createAnAccountPage = getCurrentTitle();
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("successfully landed on Create An Account Page");
+
+        String firstName = createAccountPage.fakeFirstName();
+        createAccountPage.inputFirstName(firstName);
+        LOG.info("successfully entered a first name");
+
+        String lastName = createAccountPage.fakeLastName();
+        createAccountPage.inputLastName(lastName);
+        LOG.info("successfully entered a last name");
+
+        String email = createAccountPage.fakeEmailAddress();
+        createAccountPage.inputEmailAddress(email);
+        LOG.info("successfully entered an email");
+
+        String password = createAccountPage.fakePassword();
+        createAccountPage.inputPassword(password);
+        LOG.info("successfully entered a password");
+
+        createAccountPage.inputConfirmPassword(password);
+        LOG.info("successfully entered password confirmation");
+
+        createAccountPage.clickCreateAccountButton();
+        LOG.info("successfully clicked create account");
+
+        base.clickOnWatches(getDriver());
+        watchesPage.addClamberWatchToWishList(getDriver());
+
+        base.clickOnBags(getDriver());
+        bagsPage.addMessengerBagToWishList(getDriver());
+
+        base.clickOnCustomerMenu();
+        LOG.info("click on main menu successful");
+
+        base.clickOnMyWishList();
+        String wishListPageTitle= getCurrentTitle();
+        Assert.assertEquals(wishListPageTitle,"My Wish List Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("click on my wish list successful");
+
+        String totalItems = wishListPage.getTotalItemsWishList();
+        Assert.assertEquals(totalItems, "2 Item(s)");
+
+    }
+
+    @Test
+    public void addAllWishListItemsToCart() throws InterruptedException {
+        Base base = new Base(getDriver());
+        LoginPage loginPage = new LoginPage(getDriver());
+        WatchesPage watchesPage = new WatchesPage(getDriver());
+        BagsPage bagsPage = new BagsPage(getDriver());
+        CreateAccountPage createAccountPage = new CreateAccountPage(getDriver());
+        MyWishListPage wishListPage = new MyWishListPage(getDriver());
+
+        base.clickOnCreateAnAccount();
+        String createAnAccountPage = getCurrentTitle();
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        LOG.info("successfully landed on Create An Account Page");
+
+        String firstName = createAccountPage.fakeFirstName();
+        createAccountPage.inputFirstName(firstName);
+        LOG.info("successfully entered a first name");
+
+        String lastName = createAccountPage.fakeLastName();
+        createAccountPage.inputLastName(lastName);
+        LOG.info("successfully entered a last name");
+
+        String email = createAccountPage.fakeEmailAddress();
+        createAccountPage.inputEmailAddress(email);
+        LOG.info("successfully entered an email");
+
+        String password = createAccountPage.fakePassword();
+        createAccountPage.inputPassword(password);
+        LOG.info("successfully entered a password");
+
+        createAccountPage.inputConfirmPassword(password);
+        LOG.info("successfully entered password confirmation");
+
+        createAccountPage.clickCreateAccountButton();
+        LOG.info("successfully clicked create account");
+
+        base.clickOnWatches(getDriver());
+        watchesPage.addClamberWatchToWishList(getDriver());
+
+        base.clickOnBags(getDriver());
+        bagsPage.addMessengerBagToWishList(getDriver());
+
+        wishListPage.clickAddAllItemsToCart();
+        String emptyMessage = wishListPage.getEmptyMessage();
+        Assert.assertEquals(emptyMessage,"You have no items in your wish list.");
+
+        int totalItemsInCart = base.getTotalItemsInCart(getDriver());
+        Assert.assertEquals(totalItemsInCart, 2);
+        LOG.info("Add 2 items to cart success. "+totalItemsInCart+" item/items in the cart.");
+        LOG.info(totalItemsInCart+" item/items in the cart.");
 
     }
 

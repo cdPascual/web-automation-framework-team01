@@ -1,12 +1,17 @@
 package pages.Luma;
 
 import base.CommonAPI;
+import org.apache.hc.core5.util.Timeout;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CartPage extends CommonAPI {
     Logger LOG = LogManager.getLogger(CartPage.class.getName());
@@ -28,7 +33,7 @@ public class CartPage extends CommonAPI {
     @FindBy(xpath = "//a[@class='action action-delete']")
     WebElement deleteIcon;
 
-    @FindBy(xpath = "//div[@class='cart-empty']")
+    @FindBy(xpath = "//div[@class='cart-empty']//p")
     WebElement emptyCart;
 
     //USEFUL METHODS
@@ -49,7 +54,5 @@ public class CartPage extends CommonAPI {
         clickOn(deleteIcon);
     }
 
-    public String cartIsEmpty(){
-        return getTextFromElement(emptyCart);
-    }
+    public String cartIsEmpty(){ return getTextFromElement(emptyCart); }
 }

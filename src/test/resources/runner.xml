@@ -14,6 +14,8 @@
             <class name="test.Luma.Account"></class>
             <class name="test.Luma.ShoppingCart"></class>
             <class name="test.Luma.BaseMenu"></class>
+            <class name="test.Luma.Checkout"></class>
+            <class name="test.Luma.ShoppingOptions"></class>
         </classes>
     </test>
 </suite>

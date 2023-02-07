@@ -22,9 +22,17 @@ public class BagsPage extends CommonAPI {
     @FindBy(xpath = "//form[@data-product-sku='24-WB04']")
     WebElement MessengerBagAddToCart;
 
+    @FindBy(xpath = "//ol[@class='products list items product-items']//li//a[@class='action towishlist']")
+    WebElement addMessengerBagToWishList;
+
     //useful methods
     public void addMessengerBagToCart(WebDriver driver){
         hoverOver(driver, pushItMessengerBag);
         clickOn(MessengerBagAddToCart);
     }
+    public void addMessengerBagToWishList(WebDriver driver){
+        hoverOver(driver, pushItMessengerBag);
+        clickOn(addMessengerBagToWishList);
+    }
+
 }
