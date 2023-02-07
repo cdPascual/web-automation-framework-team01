@@ -4,6 +4,7 @@ import base.CommonAPI;
 import com.saucedemo.pages.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -24,7 +25,7 @@ public class PurchaseTest extends CommonAPI {
         homePage.loginToWeb();
         String actualHomePageText = homePage.validateHomepageHeaderText();
         String expectedHomepageText = "PRODUCTS";
-        LOG.info("actual home page URL: " + actualHomePageText);
+        LOG.info("actual home page header title: " + actualHomePageText);
         Assert.assertEquals(actualHomePageText, expectedHomepageText);
         LOG.info("land to Swag Labs home page success");
 
@@ -49,7 +50,7 @@ public class PurchaseTest extends CommonAPI {
         LOG.info("Click on cart Icon success");
 
         YourCartPage yourCartPage = new YourCartPage(driver);
-        String currentCartPageText = yourCartPage.validateHomepageHeaderText();
+        String currentCartPageText = homePage.validateHomepageHeaderText();
         String expectedCartPageText = "YOUR CART";
         Assert.assertEquals(currentCartPageText, expectedCartPageText);
         LOG.info("Landed on Your cart page");
@@ -67,7 +68,7 @@ public class PurchaseTest extends CommonAPI {
 
         //Validate landing to Your Information page
         YourInfoPage infoPage = new YourInfoPage(driver);
-        String currentInfoPageText = infoPage.validateHomepageHeaderText();
+        String currentInfoPageText = infoPage.validateInfoPageHeaderText();
         String expectedInfoPageText = "CHECKOUT: YOUR INFORMATION";
         Assert.assertEquals(currentInfoPageText, expectedInfoPageText);
         LOG.info("Landed on Your Information page success");
@@ -80,7 +81,7 @@ public class PurchaseTest extends CommonAPI {
 
         //Validate landing on checkout overview page
         CheckoutOverviewPage overviewPage = new CheckoutOverviewPage(driver);
-        String actualOverviewPageText = overviewPage.validateHomepageHeaderText();
+        String actualOverviewPageText = overviewPage.validateOverviewPageHeaderText();
         String expectedOverviewPageText = "CHECKOUT: OVERVIEW";
         Assert.assertEquals(actualOverviewPageText, expectedOverviewPageText);
         LOG.info("Overview page validation success");
@@ -157,7 +158,7 @@ public class PurchaseTest extends CommonAPI {
 
         YourCartPage yourCartPage = new YourCartPage(driver);
 
-        String actualCartPageText= yourCartPage.validateHomepageHeaderText();
+        String actualCartPageText= yourCartPage.validateYourCartPageHeaderText();
         String expectedCartPageText="YOUR CART";
         Assert.assertEquals(actualCartPageText,expectedCartPageText);
         LOG.info("Landed on Your cart page");
@@ -171,7 +172,7 @@ public class PurchaseTest extends CommonAPI {
 
         //Validate landing to Your Information page
         YourInfoPage infoPage = new YourInfoPage(driver);
-        String currentInfoPageText = infoPage.validateHomepageHeaderText();
+        String currentInfoPageText = infoPage.validateInfoPageHeaderText();
         String expectedInfoPageText = "CHECKOUT: YOUR INFORMATION";
         Assert.assertEquals(currentInfoPageText, expectedInfoPageText);
         LOG.info("Landed on Your Information page success");
@@ -188,6 +189,27 @@ public class PurchaseTest extends CommonAPI {
         LOG.info("error message validation success");
     }
 
-
-
+@Test
+    public void ifUserIsAbleToContinueWithPurchaseWithoutAnItemInCart(){
+        homePage =new HomePage(driver);
+        homePage.loginToWeb();
+        String actualHomePageHeader=homePage.validateHomepageHeaderText();
+        Assert.assertEquals(actualHomePageHeader,"PRODUCTS");
+        LOG.info("Land on homepage validation success");
+        homePage.cartIcon.click();
+        LOG.info("Cart icon was clicked");
+        YourCartPage cartPage=new YourCartPage(driver);
+        String currentPageHeader=cartPage.validateYourCartPageHeaderText();
+        Assert.assertEquals(currentPageHeader, "YOUR CART");
+        LOG.info("Land on cart page success");
+        int numOfItemsInCart=driver.findElements(By.xpath("//div[@class='cart_list']")).size();
+         System.out.println(numOfItemsInCart);
+        Assert.assertNotEquals(numOfItemsInCart, 2) ;
+        LOG.info("No items are added to cart validation success");
+        cartPage.clickCheckoutButton();
+        YourInfoPage infoPage= new YourInfoPage(driver);
+        String actualPageAfterClick=infoPage.validateInfoPageHeaderText();
+        Assert.assertEquals(actualPageAfterClick, "Error: Please add a item to cart before checkout");
+        LOG.info("Click checkout without putting an item in cart error message validation fail");
+    }
 }

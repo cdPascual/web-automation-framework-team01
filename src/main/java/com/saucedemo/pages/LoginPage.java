@@ -29,8 +29,7 @@ public class LoginPage extends CommonAPI {
     @FindBy(css = "#login-button")
     WebElement submitField;
 
-    @FindBy(xpath = "\"//span[@class='title']\"")
-    WebElement a;
+
 
     @FindBy(xpath = "(//div[@class='error-message-container error'])/h3")
     WebElement errorMessage;

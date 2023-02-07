@@ -26,7 +26,7 @@ public class CheckoutOverviewPage extends CommonAPI {
     WebElement itemTotalPriceDisplayed;
 
     @FindBy(xpath = "//span[@class='title']")
-    WebElement homepageHeaderElement;
+    WebElement overviewPageHeaderElement;
 
     @FindBy(xpath = "//div[@class='summary_subtotal_label']")
     public static WebElement totalForItem;
@@ -49,8 +49,8 @@ public class CheckoutOverviewPage extends CommonAPI {
         LOG.info("Finish button clicked");
     }
 
-    public String validateHomepageHeaderText(){
-        String text=getWebPageHeaderText(homepageHeaderElement);
+    public String validateOverviewPageHeaderText(){
+        String text=getWebPageHeaderText(overviewPageHeaderElement);
         return text;
     }
 

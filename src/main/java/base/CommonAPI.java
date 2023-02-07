@@ -225,11 +225,7 @@ public class CommonAPI {
         element.sendKeys(text, Keys.ENTER);
     }
     
-    public void waitForElementToBeVisible(WebDriver driver, int duration, WebElement element) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-    
+
     public void selectOptionFromDropdown(WebElement dropdown, String option){
         Select select = new Select(dropdown);
 
@@ -255,5 +251,11 @@ public class CommonAPI {
         String webpageTitle= element.getText();
         return webpageTitle;
     }
+
+    public String getCurrentUrl(){
+        return driver.getCurrentUrl();
+
+    }
+
 }
 
