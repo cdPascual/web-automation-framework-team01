@@ -224,8 +224,8 @@ public class CommonAPI {
         element.clear();
         element.sendKeys(text, Keys.ENTER);
     }
-
     
+
     public void selectOptionFromDropdown(WebElement dropdown, String option){
         Select select = new Select(dropdown);
 
@@ -251,9 +251,11 @@ public class CommonAPI {
         String webpageTitle= element.getText();
         return webpageTitle;
     }
+
     public String getCurrentUrl(){
         return driver.getCurrentUrl();
 
     }
+
 }
 

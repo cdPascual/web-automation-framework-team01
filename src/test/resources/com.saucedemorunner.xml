@@ -7,7 +7,10 @@
         <classes>
             <class name="test.saucedemotests.LoginPageTest"></class>
             <class name="test.saucedemotests.PurchaseTest"></class>
-            <class name="test.saucedemotests.HomePageTest"></class>
+            <class name="test.saucedemotests.HomePageTest"> </class>
+            <class name="test.saucedemotests.YourCartPageTest"></class>
+            <class name="test.saucedemotests.YourInfoPageTest"></class>
+
         </classes>
     </test>
 </suite>

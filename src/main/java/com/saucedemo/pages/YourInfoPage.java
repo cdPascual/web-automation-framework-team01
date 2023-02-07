@@ -33,7 +33,20 @@ public class YourInfoPage extends CommonAPI {
     WebElement errorMessage;
 
     @FindBy(xpath = "//span[@class='title']")
-    WebElement homepageHeaderElement;
+    public WebElement yourInfoPageHeaderElement;
+
+    @FindBy(xpath = "//button[@class='btn btn_secondary back btn_medium cart_cancel_link']")
+    public static WebElement cancelButton;
+
+    @FindBy(xpath = "//button[@id='react-burger-menu-btn']")
+    WebElement infoPageMenuIcon;
+
+    @FindBy(xpath = "//a[@class='shopping_cart_link']")
+    WebElement infoPageCartIcon;
+
+
+
+
 
 
     public String userInfoFirstname = Utility.getProperties().getProperty("UserInfoFirstname");
@@ -58,11 +71,35 @@ public class YourInfoPage extends CommonAPI {
 
     }
 
-    public String validateHomepageHeaderText(){
-        String text=getWebPageHeaderText(homepageHeaderElement);
+    public String validateInfoPageHeaderText(){
+        String text=getWebPageHeaderText(yourInfoPageHeaderElement);
         return text;
     }
 
 
 
+    public void checkIfFeaturesAreDisplayed(){
+        infoPageCartIcon.isDisplayed();
+        infoPageMenuIcon.isDisplayed();
+       cancelButton.isDisplayed();
+       continueButton.isDisplayed();
+        LOG.info("All items are displayed");
+    }
+
+    public void cancelButtonClickOutcome(){
+        cancelButton.click();
+        LOG.info("Cancel button clicked");
+    }
+
+    public void continueButtonClickOutcome(){
+        continueButton.click();
+        LOG.info("Continue button clicked");
+    }
+
+    public void enterUserInfoInAllFields(){
+        userFirstnameBox.sendKeys(userInfoFirstname);
+        userLastnameBox.sendKeys(userInfoLastname);
+        zipPostalBox.sendKeys(userInfoZip);
+        LOG.info("User info has been entered in all fields");
+    }
 }
