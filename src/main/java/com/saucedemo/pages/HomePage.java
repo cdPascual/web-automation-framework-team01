@@ -316,6 +316,20 @@ public class HomePage extends CommonAPI {
 //        driver.findElement(By.xpath("//div[@class='inventory_list']")).
 //    }
 
+
+    public void checkIfTwitterIconsWork(){
+        twitterSocialLink.click();
+        LOG.info("Twitter icon clicked");
+    }
+
+    public void checkIfFaceBookIconWork(){
+        facebookSocialLink.click();
+    }
+
+    public void checkIfLinkdenIconWok(){
+        linkedinSocialLink.click();
+    }
+
 }
 
 

@@ -175,5 +175,43 @@ LOG.info("Items sorted Z-A validation success");
 
 
 
+    @Test
+    public void validateClickOnTwitterIcons(){
+        homepage= new HomePage(driver);
+        homepage.loginToWeb();
+        homepage.checkIfTwitterIconsWork();
+        LOG.info("Twitter icon click success");
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        String actualTwitterWebpage= getCurrentUrl();
+        Assert.assertEquals(actualTwitterWebpage, "https://twitter.com/saucelabs");
+        LOG.info("Twitter page landing validation success");
+    }
+
+    @Test
+    public void validateClickOnFacebookIcon(){
+        homepage=new HomePage(driver);
+        homepage.loginToWeb();
+        homepage.checkIfFaceBookIconWork();
+        LOG.info("Facebook icon click success");
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        String actualFacebookWebpage= getCurrentUrl();
+        Assert.assertEquals(actualFacebookWebpage, "https://www.facebook.com/saucelabs");
+        LOG.info("Facebook page landing validation success");
+    }
+
+    @Test
+    public void validateClickOnLinkdenIcon(){
+        homepage = new HomePage(driver);
+        homepage.loginToWeb();
+        homepage.checkIfLinkdenIconWok();
+        LOG.info("Linkeden icon click success");
+        ArrayList<String> tabs2 = new ArrayList<String> (driver.getWindowHandles());
+        driver.switchTo().window(tabs2.get(1));
+        String actualLinkdenWebpageTitle= getCurrentTitle();
+        Assert.assertEquals(actualLinkdenWebpageTitle, "Sauce Labs | LinkedIn");
+        LOG.info("Linkeden page landing validation success");
+    }
 
 }
