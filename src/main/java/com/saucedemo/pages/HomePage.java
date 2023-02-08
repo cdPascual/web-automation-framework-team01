@@ -20,11 +20,16 @@ public class HomePage extends CommonAPI {
     public String username = Utility.getProperties().getProperty("saucedemo.correct.username");
     public String password = Utility.getProperties().getProperty("saucedemo.correct.password");
 
+    public String probUsername=Utility.getProperties().getProperty("saucedemo.prob.username");
+    public String probPassword=Utility.getProperties().getProperty("saucedemo.prob.password");
     @FindBy(id = "item_4_title_link")
     WebElement sauceLabsBackpack;
 
     @FindBy(id = "add-to-cart-sauce-labs-backpack")
     WebElement addToCartButton;
+
+    @FindBy(id="add-to-cart-sauce-labs-fleece-jacket")
+    WebElement addToCartButtonProbAcc;
 
     @FindBy(css = "#user-name")
     WebElement userField;
@@ -162,6 +167,18 @@ public class HomePage extends CommonAPI {
     @FindBy(xpath = "//select[@class='product_sort_container']//option[4]")
     WebElement fourthFilterOption;
 
+    @FindBy(xpath= "//a[@id='item_4_title_link']/div")
+    WebElement probAccItem;
+
+    public void selectItemInProbAcc(){
+        loginToWebUsingProbCredentials();
+        sauceLabsBackpack.click();
+    }
+
+    public void addItemToCartInProbAcc(){
+        addToCartButtonProbAcc.click();
+    }
+
     public void selectItem() {
         sauceLabsBackpack.click();
         LOG.info("Sauce Labs backpack click success");
@@ -180,6 +197,13 @@ public class HomePage extends CommonAPI {
         submitField.click();
         LOG.info("Logged in to Sauce demo");
 
+    }
+
+    public void loginToWebUsingProbCredentials(){
+        userField.sendKeys(probUsername);
+        passField.sendKeys(probPassword);
+        submitField.click();
+        LOG.info("Logged in to web using problem user cred");
     }
 
 
