@@ -5,6 +5,7 @@ import com.beust.ah.A;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.saucedemo.pages.HomePage;
 import com.saucedemo.pages.LoginPage;
+import com.saucedemo.pages.YourCartPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -174,6 +175,14 @@ LOG.info("Items sorted Z-A validation success");
 //        }
 
 
+    @Test
+    public void checkIfAllImagesAreUnique(){
+        homepage =new HomePage(driver);
+        homepage.loginToWebUsingProbCredentials();
+        int actualNumOfTheSameElement=driver.findElements(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']")).size();
+        Assert.assertEquals(actualNumOfTheSameElement, 1);
+    }
+
 
     @Test
     public void validateClickOnTwitterIcons(){
@@ -212,6 +221,23 @@ LOG.info("Items sorted Z-A validation success");
         String actualLinkdenWebpageTitle= getCurrentTitle();
         Assert.assertEquals(actualLinkdenWebpageTitle, "Sauce Labs | LinkedIn");
         LOG.info("Linkeden page landing validation success");
+    }
+
+    @Test
+    public void userClicksSpecificItemValidation(){
+        homepage= new HomePage(driver);
+        homepage.selectItemInProbAcc();
+        LOG.info("Logged in to problem user and clicked on item");
+
+        String currentPageUrl= getCurrentUrl();
+        Assert.assertEquals(currentPageUrl, "https://www.saucedemo.com/inventory-item.html?id=5");
+        LOG.info("Cart page landing validation success");
+
+        homepage.addItemToCartInProbAcc();
+        int actualQuantityOfItemsPresentInCart = driver.findElements(By.xpath("//span[@class='shopping_cart_badge']")).size();
+        Assert.assertEquals(actualQuantityOfItemsPresentInCart, 1);
+        LOG.info("Item added to cart validation failed");
+
     }
 
 }
