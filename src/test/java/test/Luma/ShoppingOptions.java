@@ -53,14 +53,6 @@ public class ShoppingOptions extends CommonAPI {
         Assert.assertEquals(ascendingOrder,true);
         LOG.info("Sort by price successful. first item is "+firstItemPrice+" last item is "+lastItemPrice);
 
-        System.out.println("1".compareTo("3"));
-        System.out.println("3".compareTo("1"));
-        System.out.println("10".compareTo("3"));
-        System.out.println("30".compareTo("03.50"));
-        //System.out.println("");
-        //System.out.println();
-
-
 
     }
 }
