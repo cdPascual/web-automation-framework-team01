@@ -3,7 +3,6 @@ package com.saucedemo.pages;
 import base.CommonAPI;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -121,6 +120,12 @@ public class HomePage extends CommonAPI {
     @FindBy(xpath = "//div[@class='inventory_list']/div[2]/div/a")
     WebElement sauceLabsBikeLightImgLink;
 
+//    @FindBy(xpath = "//img[@src='/static/media/sl-404.168b1cce.jpg']")
+//     public static WebElement probAccSauceLabsBackpackPic;
+//
+//    @FindBy(xpath = "//img[@src='/static/media/sauce-backpack-1200x1500.34e7aa42.jpg']")
+//    public static WebElement correctAccSauceLabsBackpackPic;
+
     @FindBy(xpath = "//a[@id='item_0_title_link']")
     public static WebElement sauceLabsBikeLightTitleLink;
 
@@ -170,10 +175,16 @@ public class HomePage extends CommonAPI {
     @FindBy(xpath= "//a[@id='item_4_title_link']/div")
     WebElement probAccItem;
 
+    @FindBy(xpath = "//a[@id='item_0_title_link']")
+    public static WebElement probAccSauceLabsBikeLightItem;
+
     public void selectItemInProbAcc(){
         loginToWebUsingProbCredentials();
         sauceLabsBackpack.click();
     }
+
+//    public static String actualSauceLabsBackpackPic= probAccSauceLabsBackpackPic.getText();
+//    public static String expectedSauceLabsBackpackPic=correctAccSauceLabsBackpackPic.getText();
 
     public void addItemToCartInProbAcc(){
         addToCartButtonProbAcc.click();

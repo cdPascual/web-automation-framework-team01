@@ -51,7 +51,34 @@ public class YourInfoPageTest extends CommonAPI {
 
 
 
+@Test
+    public void testInputUserInfoThenClickContinueProbAcc(){
+        homePage= new HomePage(driver);
+        homePage.loginToWebUsingProbCredentials();
 
+        String actualHomepagePageHeader= homePage.validateHomepageHeaderText();
+        Assert.assertEquals(actualHomepagePageHeader, "PRODUCTS");
+    LOG.info("Homepage on problem account landing success");
+
+        homePage.cartIcon.click();
+        YourCartPage cartPage=new YourCartPage(driver);
+        String actualCartPageHeader=cartPage.validateYourCartPageHeaderText();
+        Assert.assertEquals(actualCartPageHeader, "YOUR CART");
+    LOG.info("Cart page on problem account landing success");
+        cartPage.clickCheckoutButton();
+        YourInfoPage infoPage= new YourInfoPage(driver);
+        String actualInfoPageHeader= infoPage.validateInfoPageHeaderText();
+        Assert.assertEquals(actualInfoPageHeader, "CHECKOUT: YOUR INFORMATION");
+    LOG.info("Info page on problem account landing success");
+        infoPage.enterUserInfoInAllFields();
+        LOG.info("User info Entered");
+        String actualTextEnteredInFirstNameField=infoPage.userFirstnameBox.getAttribute("value");
+        Assert.assertEquals(actualTextEnteredInFirstNameField, "Sam");
+        LOG.info("User info Entered incorrectly");
+
+
+
+}
 
 
 }

@@ -1,23 +1,14 @@
 package test.saucedemotests;
 
 import base.CommonAPI;
-import com.beust.ah.A;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.saucedemo.pages.HomePage;
-import com.saucedemo.pages.LoginPage;
-import com.saucedemo.pages.YourCartPage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class HomePageTest extends CommonAPI {
     Logger LOG = LogManager.getLogger(HomePageTest.class.getName());
@@ -117,66 +108,10 @@ public class HomePageTest extends CommonAPI {
     }
 
 
-    List<WebElement> filterOptionsList;
-    Select objSelect;
-    List<WebElement> elementList;
-
-    @FindBy(xpath = "//div[@class='inventory_item']")
-    WebElement itemContainer;
-
-    @Test
-    public void nameAndNumOfFilterOptionsValidation() {
-        HomePage homepage = new HomePage(driver);
-        homepage.loginToWeb();
-        //String[] exp= {"Name (A to Z)", "Name (Z to A)","Price (low to high)","Price (high to low)"};
-        objSelect = new Select(homepage.productContainerIcon);
-        filterOptionsList = new ArrayList<WebElement>();
-        filterOptionsList = objSelect.getOptions();
-        LOG.info("Number of options in filter");
-
-        int actualNumOfItemsInFilter = filterOptionsList.size();
-        Assert.assertEquals(actualNumOfItemsInFilter, 4);
-        LOG.info("NUmber of options in filter validation success");
-
-        String options;
-        LOG.info("Options in filter are: ");
-        for (int i = 0; i < filterOptionsList.size(); i++) {
-            options = filterOptionsList.get(i).getText();
-            System.out.println(options);
-        }
-
-
-//         //homepage.productContainerIcon.click();
-//        Select select= new Select(homepage.productContainerIcon);
-//        select.selectByIndex(1);
-//        LOG.info("First filter selected");
-//
-//        ArrayList<String> obtainedList = new ArrayList<>();
-//        elementList= (List<WebElement>) itemContainer;
-//        for(WebElement we:elementList){
-//            obtainedList.add(we.getText());
-//        }
-//        ArrayList<String> sortedList = new ArrayList<>();
-//        for(String s:obtainedList){
-//            sortedList.add(s);
-//        }
-//        Collections.sort(sortedList);
-//        Assert.assertTrue(sortedList.equals(obtainedList));
-
-LOG.info("Items sorted Z-A validation success");
-
-    }
-
-//     @Test
-//    public void validateAllFilterOptions(){
-//            homepage=new HomePage(driver);
-//            homepage.filterOptionNameAtoZ();
-//            //Assert.
-//        }
 
 
     @Test
-    public void checkIfAllImagesAreUnique(){
+    public void checkIfAllImagesAreUniqueInProbACC(){
         homepage =new HomePage(driver);
         homepage.loginToWebUsingProbCredentials();
         int actualNumOfTheSameElement=driver.findElements(By.xpath("//img[@src='/static/media/sl-404.168b1cce.jpg']")).size();
@@ -239,5 +174,20 @@ LOG.info("Items sorted Z-A validation success");
         LOG.info("Item added to cart validation failed");
 
     }
+
+
+
+
+
+//    @Test
+//    public void validateItemImagesOnProblemAcc(){
+//        homepage= new HomePage(driver);
+//        homepage.loginToWebUsingProbCredentials();
+//        String actualHomePageHeader= homepage.validateHomepageHeaderText();
+//        Assert.assertEquals(actualHomePageHeader, "PRODUCTS");
+//        LOG.info("Log in to problem user acc successful");
+//        Assert.assertEquals(homepage.actualSauceLabsBackpackPic, homepage.expectedSauceLabsBackpackPic);
+//        LOG.info("Image Validation unsuccessful");
+//    }
 
 }
