@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Test;
 
 public class YourCartPage extends CommonAPI {
 
@@ -23,7 +24,7 @@ public class YourCartPage extends CommonAPI {
     WebElement menuIcon;
 
     @FindBy(xpath = "//div[@id='shopping_cart_container']/a")
-    WebElement cartIcon;
+   public static WebElement cartButton;
 
     @FindBy(xpath = "//a[@id='inventory_sidebar_link']")
     WebElement menuIconAllItemsOption;
@@ -70,6 +71,10 @@ public class YourCartPage extends CommonAPI {
     @FindBy(xpath = "//div[@class='cart_list']")
     public static WebElement itemContainer;
 
+    @FindBy(xpath = "//div[@class='inventory_details_name large_size']")
+    public static WebElement actualItemAddedToCart;
+
+
     public void itemPresentInCart() {
         itemInCart.isDisplayed();
         LOG.info("Item is present in cart page");
@@ -111,7 +116,7 @@ public class YourCartPage extends CommonAPI {
     }
 
     public void ifCartIconIsDisplayed(){
-        cartIcon.isDisplayed();
+        cartButton.isDisplayed();
     }
 
 

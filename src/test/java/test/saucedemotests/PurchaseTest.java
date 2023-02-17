@@ -211,5 +211,6 @@ public class PurchaseTest extends CommonAPI {
         String actualPageAfterClick=infoPage.validateInfoPageHeaderText();
         Assert.assertEquals(actualPageAfterClick, "Error: Please add a item to cart before checkout");
         LOG.info("Click checkout without putting an item in cart error message validation fail");
+
     }
 }

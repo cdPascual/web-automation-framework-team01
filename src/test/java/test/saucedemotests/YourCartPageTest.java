@@ -2,6 +2,7 @@ package test.saucedemotests;
 
 import base.CommonAPI;
 import com.saucedemo.pages.HomePage;
+import com.saucedemo.pages.SauceLabsBikeLightPage;
 import com.saucedemo.pages.YourCartPage;
 import com.saucedemo.pages.YourInfoPage;
 import org.apache.logging.log4j.LogManager;
@@ -81,4 +82,19 @@ public class YourCartPageTest extends CommonAPI {
     }
 
 
+    @Test
+    public void validateIfCorrectItemIsClickedOnProbAcc(){
+        homepage= new HomePage(driver);
+        homepage.loginToWebUsingProbCredentials();
+        String expectedItemAddedToCart= homepage.probAccSauceLabsBikeLightItem.getText();
+        homepage.probAccSauceLabsBikeLightItem.click();
+        LOG.info("Click on SauceLabsBike light item success");
+        SauceLabsBikeLightPage sauceLabsBikeLightPage= new SauceLabsBikeLightPage(driver);
+        String actualSauceLabsBackPackPageUrl= getCurrentUrl();
+        Assert.assertEquals(actualSauceLabsBackPackPageUrl, "https://www.saucedemo.com/inventory-item.html?id=1");
+        LOG.info("Item page landing validation success");
+
+        String actualItemAddedToCart= sauceLabsBikeLightPage.actualItemAddedToCart.getText();
+        Assert.assertEquals(expectedItemAddedToCart, actualItemAddedToCart);
+    }
 }

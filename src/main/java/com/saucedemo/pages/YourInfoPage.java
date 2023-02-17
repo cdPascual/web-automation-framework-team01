@@ -18,13 +18,15 @@ public class YourInfoPage extends CommonAPI {
     }
 
     @FindBy(xpath = "//input[@id='first-name']")
-    WebElement userFirstnameBox;
+    public static WebElement userFirstnameBox;
+
+
 
     @FindBy(xpath = "//input[@id='last-name']")
-    WebElement userLastnameBox;
+    public static WebElement userLastnameBox;
 
     @FindBy(xpath = "//input[@id='postal-code']")
-    WebElement zipPostalBox;
+   public static  WebElement zipPostalBox;
 
     @FindBy(xpath = "//input[@class='submit-button btn btn_primary cart_button btn_action']")
     WebElement continueButton;
@@ -98,8 +100,11 @@ public class YourInfoPage extends CommonAPI {
 
     public void enterUserInfoInAllFields(){
         userFirstnameBox.sendKeys(userInfoFirstname);
+        LOG.info("User First name entered");
         userLastnameBox.sendKeys(userInfoLastname);
+        LOG.info("User Last name entered");
         zipPostalBox.sendKeys(userInfoZip);
+        LOG.info("User zip entered");
         LOG.info("User info has been entered in all fields");
     }
 }
