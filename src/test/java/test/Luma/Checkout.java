@@ -25,7 +25,7 @@ public class Checkout extends CommonAPI {
 
         base.clickOnBags(getDriver());
         String bagsPageTitle = getCurrentTitle();
-        Assert.assertEquals(bagsPageTitle, "Bags - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(bagsPageTitle, "Bags - Gear");
         LOG.info("Bags page validation success");
 
         bagsPage.addMessengerBagToCart(getDriver());
@@ -33,7 +33,7 @@ public class Checkout extends CommonAPI {
         base.clickOnWatches(getDriver());
         watchesPage.addClamberWatchToCart(getDriver());
         String watchesPageTitle = getCurrentTitle();
-        Assert.assertEquals(watchesPageTitle, "Watches - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(watchesPageTitle, "Watches - Gear");
         LOG.info("Watches page validation success");
 
         watchesPage.addClamberWatchToCart(getDriver());
@@ -42,7 +42,7 @@ public class Checkout extends CommonAPI {
         base.clickOnCartIcon();
         base.clickOnCheckout();
         String checkoutTitle = getCurrentTitle();
-        Assert.assertEquals(checkoutTitle,"Checkout Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(checkoutTitle,"Checkout");
         LOG.info("land on checkout page success");
         Thread.sleep(3000);
 

@@ -23,7 +23,7 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnWhatsNew();
         String whatsNewPage = getCurrentTitle();
-        Assert.assertEquals(whatsNewPage,"What's New Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(whatsNewPage,"What's New");
 
     }
 
@@ -38,31 +38,31 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnWomen();
         String womenPage = getCurrentTitle();
-        Assert.assertEquals(womenPage,"Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites" );
+        Assert.assertEquals(womenPage,"Women" );
 
         base.clickOnWomenTops(getDriver());
         String womenTopsPage = getCurrentTitle();
-        Assert.assertEquals(womenTopsPage,"Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(womenTopsPage,"Tops - Women");
 
         base.clickOnWomenBottoms(getDriver());
         String womenBottoms = getCurrentTitle();
-        Assert.assertEquals(womenBottoms,"Bottoms - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(womenBottoms,"Bottoms - Women");
 
         base.clickOnWomenJackets(getDriver());
         String womenJacketTitle = getCurrentTitle();
-        Assert.assertEquals(womenJacketTitle, "Jackets - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(womenJacketTitle, "Jackets - Tops - Women");
 
         base.clickOnWomenHoodiesAndSweaters(getDriver());
         String womanHoodiesSweater = getCurrentTitle();
-        Assert.assertEquals(womanHoodiesSweater, "Hoodies & Sweatshirts - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(womanHoodiesSweater, "Hoodies & Sweatshirts - Tops - Women");
 
         base.clickOnWomenTees(getDriver());
         String MenTees = getCurrentTitle();
-        Assert.assertEquals(MenTees, "Tees - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(MenTees, "Tees - Tops - Women");
 
         base.clickOnWomenBrasAndTanks(getDriver());
         String MenBrasTank = getCurrentTitle();
-        Assert.assertEquals(MenBrasTank,"Bras & Tanks - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(MenBrasTank,"Bras & Tanks - Tops - Women");
 
     }
     @Test
@@ -76,39 +76,39 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnMen();
         String menPage = getCurrentTitle();
-        Assert.assertEquals(menPage,"Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites" );
+        Assert.assertEquals(menPage,"Men" );
 
         base.clickOnMenTops(getDriver());
         String menTopsPage = getCurrentTitle();
-        Assert.assertEquals(menTopsPage,"Tops - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menTopsPage,"Tops - Men");
 
         base.clickOnMenBottoms(getDriver());
         String menBottoms = getCurrentTitle();
-        Assert.assertEquals(menBottoms,"Bottoms - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menBottoms,"Bottoms - Men");
 
         base.clickOnMenJackets(getDriver());
         String menJacketTitle = getCurrentTitle();
-        Assert.assertEquals(menJacketTitle, "Jackets - Tops - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menJacketTitle, "Jackets - Tops - Men");
 
         base.clickOnMenHoodiesAndSweaters(getDriver());
         String menHoodiesSweater = getCurrentTitle();
-        Assert.assertEquals(menHoodiesSweater, "Hoodies & Sweatshirts - Tops - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menHoodiesSweater, "Hoodies & Sweatshirts - Tops - Men");
 
         base.clickOnMenTees(getDriver());
         String menTees = getCurrentTitle();
-        Assert.assertEquals(menTees, "Tees - Tops - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menTees, "Tees - Tops - Men");
 
         base.clickOnMenTanks(getDriver());
         String menTanks = getCurrentTitle();
-        Assert.assertEquals(menTanks,"Tanks - Tops - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menTanks,"Tanks - Tops - Men");
 
         base.clickOnMenPants(getDriver());
         String menPants = getCurrentTitle();
-        Assert.assertEquals(menPants,"Pants - Bottoms - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menPants,"Pants - Bottoms - Men");
 
         base.clickOnMenShorts(getDriver());
         String menShorts = getCurrentTitle();
-        Assert.assertEquals(menShorts,"Shorts - Bottoms - Men Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(menShorts,"Shorts - Bottoms - Men");
     }
 
     @Test
@@ -121,19 +121,19 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnGear();
         String gearPage = getCurrentTitle();
-        Assert.assertEquals(gearPage,"Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(gearPage,"Gear");
 
         base.clickOnBags(getDriver());
         String bagsPage = getCurrentTitle();
-        Assert.assertEquals(bagsPage,"Bags - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(bagsPage,"Bags - Gear");
 
         base.clickOnFitnessEquipment(getDriver());
         String fitnessEquipmentPage = getCurrentTitle();
-        Assert.assertEquals(fitnessEquipmentPage,"Fitness Equipment - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(fitnessEquipmentPage,"Fitness Equipment - Gear");
 
         base.clickOnWatches(getDriver());
         String watchesPage = getCurrentTitle();
-        Assert.assertEquals(watchesPage,"Watches - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(watchesPage,"Watches - Gear");
 
     }
 
@@ -147,11 +147,11 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnTraining();
         String trainingPage = getCurrentTitle();
-        Assert.assertEquals(trainingPage,"Training Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(trainingPage,"Training");
 
         base.clickOnVideoDownload(getDriver());
         String videoDownloadPage = getCurrentTitle();
-        Assert.assertEquals(videoDownloadPage,"Video Download - Training Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(videoDownloadPage,"Video Download - Training");
 
     }
 
@@ -165,6 +165,6 @@ public class BaseMenu extends CommonAPI {
 
         base.clickOnSale();
         String salePage = getCurrentTitle();
-        Assert.assertEquals(salePage,"Sale Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(salePage,"Sale");
     }
 }

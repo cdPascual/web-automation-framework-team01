@@ -17,9 +17,10 @@ public class Account extends CommonAPI {
         LoginPage loginPage = new LoginPage(getDriver());
 
         homePage.clickOnLoginButton();
+        Thread.sleep(3);
 
         String title = getCurrentTitle();
-        Assert.assertEquals(title, "Customer Login Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(title, "Customer Login");
         LOG.info("login title page validation success");
 
         loginPage.typeEmailAddress("crazycray@dhsj");
@@ -39,7 +40,7 @@ public class Account extends CommonAPI {
 
         base.clickOnCreateAnAccount();
         String createAnAccountPage = getCurrentTitle();
-        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account");
         LOG.info("successfully landed on Create An Account Page");
 
         String firstName = createAccountPage.fakeFirstName();
@@ -65,7 +66,7 @@ public class Account extends CommonAPI {
         LOG.info("successfully clicked create account");
 
         String myAccountPageTitle = getCurrentTitle();
-        Assert.assertEquals(myAccountPageTitle,"My Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(myAccountPageTitle,"My Account");
         LOG.info("successfully Created An Account");
     }
 
@@ -80,7 +81,7 @@ public class Account extends CommonAPI {
 
         base.clickOnCreateAnAccount();
         String createAnAccountPage = getCurrentTitle();
-        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account");
         LOG.info("successfully landed on Create An Account Page");
 
         String firstName = createAccountPage.fakeFirstName();
@@ -116,7 +117,7 @@ public class Account extends CommonAPI {
 
         base.clickOnMyWishList();
         String wishListPageTitle= getCurrentTitle();
-        Assert.assertEquals(wishListPageTitle,"My Wish List Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(wishListPageTitle,"My Wish List");
         LOG.info("click on my wish list successful");
 
         String totalItems = wishListPage.getTotalItemsWishList();
@@ -135,7 +136,7 @@ public class Account extends CommonAPI {
 
         base.clickOnCreateAnAccount();
         String createAnAccountPage = getCurrentTitle();
-        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(getCurrentTitle(),"Create New Customer Account");
         LOG.info("successfully landed on Create An Account Page");
 
         String firstName = createAccountPage.fakeFirstName();
