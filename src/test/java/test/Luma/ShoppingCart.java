@@ -26,12 +26,12 @@ public class ShoppingCart extends CommonAPI {
 
         homePage.clickOnWhatsNewMenuItem();
         String whatsNewPageTitle = getCurrentTitle();
-        Assert.assertEquals(whatsNewPageTitle, "What's New Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(whatsNewPageTitle, "What's New");
         LOG.info("Whats New page validation success");
 
         whatsNewPage.clickOnWomenHoodiesSweatshirt();
         String WomenHoodieSweatPageTitle = getCurrentTitle();
-        Assert.assertEquals(WomenHoodieSweatPageTitle, "Hoodies & Sweatshirts - Tops - Women Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(WomenHoodieSweatPageTitle, "Hoodies & Sweatshirts - Tops - Women");
         LOG.info("Women's Hoodie & Sweatshirt page validation success");
 
         womanHoodieSweatshirtPage.clickOnMediumSize();
@@ -59,7 +59,7 @@ public class ShoppingCart extends CommonAPI {
 
         base.clickOnBags(getDriver());
         String bagsPageTitle = getCurrentTitle();
-        Assert.assertEquals(bagsPageTitle, "Bags - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(bagsPageTitle, "Bags - Gear");
         LOG.info("Bags page validation success");
 
         bagsPage.addMessengerBagToCart(getDriver());
@@ -67,7 +67,7 @@ public class ShoppingCart extends CommonAPI {
         base.clickOnWatches(getDriver());
         watchesPage.addClamberWatchToCart(getDriver());
         String watchesPageTitle = getCurrentTitle();
-        Assert.assertEquals(watchesPageTitle, "Watches - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(watchesPageTitle, "Watches - Gear");
         LOG.info("Watches page validation success");
 
         watchesPage.addClamberWatchToCart(getDriver());
@@ -87,7 +87,7 @@ public class ShoppingCart extends CommonAPI {
 
         base.clickOnFitnessEquipment(getDriver());
         String fitnessEquipmentPageTitle = getCurrentTitle();
-        Assert.assertEquals(fitnessEquipmentPageTitle, "Fitness Equipment - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(fitnessEquipmentPageTitle, "Fitness Equipment - Gear");
         LOG.info("Fitness Equipment page validation success");
 
         fitnessEquipmentPage.addSpriteFoamRollerToCart(getDriver());
@@ -98,7 +98,7 @@ public class ShoppingCart extends CommonAPI {
         base.clickOnCartIcon();
         base.clickOnViewEditCart();
         String cartPageTitle = getCurrentTitle();
-        Assert.assertEquals(cartPageTitle,"Shopping Cart Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(cartPageTitle,"Shopping Cart");
 
         cartPage.updateCart("2");
         String cartQty = cartPage.getTotalPrice();
@@ -115,7 +115,7 @@ public class ShoppingCart extends CommonAPI {
 
         base.clickOnFitnessEquipment(getDriver());
         String fitnessEquipmentPageTitle = getCurrentTitle();
-        Assert.assertEquals(fitnessEquipmentPageTitle, "Fitness Equipment - Gear Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(fitnessEquipmentPageTitle, "Fitness Equipment - Gear");
         LOG.info("Fitness Equipment page validation success");
 
         fitnessEquipmentPage.addSpriteFoamRollerToCart(getDriver());
@@ -126,7 +126,7 @@ public class ShoppingCart extends CommonAPI {
         base.clickOnCartIcon();
         base.clickOnViewEditCart();
         String cartPageTitle = getCurrentTitle();
-        Assert.assertEquals(cartPageTitle,"Shopping Cart Magento Commerce - website to practice selenium | demo website for automation testing | selenium practice sites");
+        Assert.assertEquals(cartPageTitle,"Shopping Cart");
         LOG.info("Landed on Cart Page");
 
         cartPage.clickOnDeleteIcon();
